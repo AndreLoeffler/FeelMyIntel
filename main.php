@@ -83,9 +83,10 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php /*old includehook*/ @include(dirname(__FILE__).'/pageheader.html')?>
 
     <?php flush()?>
-    <?php if(tpl_getConf('sidebar') == 'left') { ?>
 
+    <?php if(tpl_getConf('sidebar') == 'left') { ?>
       <?php if(!arctic_tpl_sidebar_hide()) { ?>
+      <div class="sidebar-container">
         <div class="left_sidebar full-width">
           <?php tpl_searchform() ?>
           <?php arctic_tpl_sidebar('left') ?>
@@ -109,6 +110,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 		}
 		?>
         </div>
+      </div>
       <?php } else { ?>
         <div class="page">
           <?php tpl_content()?> 
@@ -116,8 +118,8 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
       <?php } ?>
 
     <?php } elseif(tpl_getConf('sidebar') == 'right') { ?>
-
       <?php if(!arctic_tpl_sidebar_hide()) { ?>
+	  <div class="sidebar-container">
 		<div class="left_page">
 		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
           <?php
@@ -141,15 +143,16 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           <?php tpl_searchform() ?>
           <?php arctic_tpl_sidebar('right') ?>
         </div>
+      </div>
       <?php } else { ?>
         <div class="page">
           <?php tpl_content() ?> 
         </div> 
       <?php }?>
 
-	<div class="sidebar-container">
     <?php } elseif(tpl_getConf('sidebar') == 'both') { ?>
       <?php if(!arctic_tpl_sidebar_hide()) { ?>
+	  <div class="sidebar-container">
         <div class="left_sidebar full-width">
           <?php if(tpl_getConf('search') == 'left') tpl_searchform() ?>
           <?php arctic_tpl_sidebar('left','sidebar') ?>
@@ -158,8 +161,8 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 	        <div style="clear: both" class="left_sidebar full-width">
 	          <?php arctic_tpl_sidebar('left','private') ?>
 	        </div>
+	  </div> <!-- sidebar-container -->
         <?php }?>
-	</div> <!-- sidebar-container -->
         
 		<div class="center_page">
 		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
