@@ -161,8 +161,8 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 	        <div style="clear: both" class="left_sidebar full-width">
 	          <?php arctic_tpl_sidebar('left','private') ?>
 	        </div>
-	  </div> <!-- sidebar-container -->
         <?php }?>
+	  </div> <!-- sidebar-container -->
         
 		<div class="center_page">
 		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
