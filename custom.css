@@ -32,8 +32,38 @@ div.dokuwiki div.meta div.user { float: right; }
 }
 
 div.dokuwiki div.left_sidebar.full-width { width: 100%; }
+
 .sidebar-container { 
 	width: 19%; 
 	float: left; 
 	margin-right: 0.4em;
+}
+
+div.dokuwiki div.inclmeta { 
+	text-align: right;
+}
+
+.plugin_include_content {
+	border: 1px solid black;
+	margin-bottom: 0.4em;
+}
+div.dokuwiki .plugin_include_content h1 {
+	border-bottom: none;
+}
+
+div.dokuwiki .bar {
+	border: none;
+	margin-top: 0.4em;
+}
+
+div.dokuwiki div.center_page.border {
+	border: 1px solid black;
+	border-radius: 0px;
+	box-shadow: none;
+	margin-top: 3px;
+}
+div.dokuwiki div.full-width div.sidebar_box {
+	border-radius: 0px;
+	border: 1px solid black;
+	box-shadow: none;
 }

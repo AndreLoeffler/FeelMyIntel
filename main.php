@@ -164,7 +164,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
         <?php }?>
 	  </div> <!-- sidebar-container -->
         
-		<div class="center_page">
+		<div class="center_page border">
 		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
         <?php
           $translation = &plugin_load('helper','translation');
