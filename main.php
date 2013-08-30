@@ -83,7 +83,6 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php /*old includehook*/ @include(dirname(__FILE__).'/pageheader.html')?>
 
     <?php flush()?>
-	<div class="sidebar-container">
     <?php if(tpl_getConf('sidebar') == 'left') { ?>
 
       <?php if(!arctic_tpl_sidebar_hide()) { ?>
@@ -148,8 +147,8 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
         </div> 
       <?php }?>
 
+	<div class="sidebar-container">
     <?php } elseif(tpl_getConf('sidebar') == 'both') { ?>
-
       <?php if(!arctic_tpl_sidebar_hide()) { ?>
         <div class="left_sidebar full-width">
           <?php if(tpl_getConf('search') == 'left') tpl_searchform() ?>
@@ -160,7 +159,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 	          <?php arctic_tpl_sidebar('left','private') ?>
 	        </div>
         <?php }?>
-	</div>
+	</div> <!-- sidebar-container -->
         
 		<div class="center_page">
 		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
