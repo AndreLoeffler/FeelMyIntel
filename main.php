@@ -83,11 +83,11 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php /*old includehook*/ @include(dirname(__FILE__).'/pageheader.html')?>
 
     <?php flush()?>
-
+	<div class="sidebar-container">
     <?php if(tpl_getConf('sidebar') == 'left') { ?>
 
       <?php if(!arctic_tpl_sidebar_hide()) { ?>
-        <div class="left_sidebar">
+        <div class="left_sidebar full-width">
           <?php tpl_searchform() ?>
           <?php arctic_tpl_sidebar('left') ?>
         </div>
@@ -151,10 +151,17 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php } elseif(tpl_getConf('sidebar') == 'both') { ?>
 
       <?php if(!arctic_tpl_sidebar_hide()) { ?>
-        <div class="left_sidebar">
+        <div class="left_sidebar full-width">
           <?php if(tpl_getConf('search') == 'left') tpl_searchform() ?>
-          <?php arctic_tpl_sidebar('left') ?>
+          <?php arctic_tpl_sidebar('left','sidebar') ?>
         </div>
+        <?php if(isset($INFO['userinfo'])) { ?>
+	        <div style="clear: both" class="left_sidebar full-width">
+	          <?php arctic_tpl_sidebar('left','private') ?>
+	        </div>
+        <?php }?>
+	</div>
+        
 		<div class="center_page">
 		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
         <?php
@@ -176,7 +183,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
         </div>
         <div class="right_sidebar">
           <?php if(tpl_getConf('search') == 'right') tpl_searchform() ?>
-          <?php arctic_tpl_sidebar('right') ?>
+          <?php arctic_tpl_sidebar('right', 'sidebar') ?>
         </div>
       <?php } else { ?>
         <div class="page">
@@ -227,14 +234,14 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 					if ((tpl_getConf('show_backlink') == 'bottom') || (tpl_getConf('show_backlink') == 'both')) {
 					tpl_button('backlink');
 					}
-	              break;
+	              	break;
 	            case('links'):
 	            	tpl_actionlink('edit');
 	                tpl_actionlink('history');
 					if ((tpl_getConf('show_backlink') == 'bottom') || (tpl_getConf('show_backlink') == 'both')) {
 					tpl_actionlink('backlink');
 					}
-	              break;
+	              	break;
 	          }
 	        ?>
 	      </div>
@@ -246,12 +253,12 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 					tpl_button('back');
 	                tpl_button('media');
 	                tpl_button('top');
-	              break;
+	              	break;
 	            case('links'):
 					tpl_actionlink('back');
 	                tpl_actionlink('media');
 	                tpl_actionlink('top');
-	              break;
+	              	break;
 	          }
 	        ?>
 	      </div>

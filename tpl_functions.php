@@ -40,7 +40,7 @@ switch($sbpos) {
  * 
  * @author Michael Klier <chi@chimeric.de>
  */
-function arctic_tpl_sidebar($pos) {
+function arctic_tpl_sidebar($pos,$pn) {
 
     $sb_order   = ($pos == 'left') ? explode(',', tpl_getConf('left_sidebar_order'))   : explode(',', tpl_getConf('right_sidebar_order'));
     $sb_content = ($pos == 'left') ? explode(',', tpl_getConf('left_sidebar_content')) : explode(',', tpl_getConf('right_sidebar_content'));
@@ -50,14 +50,14 @@ function arctic_tpl_sidebar($pos) {
         if(in_array($sb,$sb_content)) {
             $key = array_search($sb,$sb_content);
             unset($sb_content[$key]);
-            arctic_tpl_sidebar_dispatch($sb,$pos);
+            arctic_tpl_sidebar_dispatch($sb,$pos,$pn);
         }
     }
 
     // check for left content not specified by order
     if(is_array($sb_content) && !empty($sb_content) > 0) {
         foreach($sb_content as $sb) {
-            arctic_tpl_sidebar_dispatch($sb,$pos);
+            arctic_tpl_sidebar_dispatch($sb,$pos,$pn);
         }
     }
 }
@@ -67,7 +67,7 @@ function arctic_tpl_sidebar($pos) {
  *
  * @author Michael Klier <chi@chimeric.de>
  */
-function arctic_tpl_sidebar_dispatch($sb,$pos) {
+function arctic_tpl_sidebar_dispatch($sb,$pos,$pn) {
     global $lang;
     global $conf;
     global $ID;
@@ -79,8 +79,9 @@ function arctic_tpl_sidebar_dispatch($sb,$pos) {
     $svREV = $REV;  // save current REV 
     $svTOC = $TOC;  // save current TOC
 
-    $pname = tpl_getConf('pagename');
-
+    //$pname = tpl_getConf('pagename');
+    $pname = $pn;
+    
     switch($sb) {
 
         case 'main':

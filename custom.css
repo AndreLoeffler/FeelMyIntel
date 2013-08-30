@@ -30,3 +30,10 @@ div.dokuwiki div.meta div.user { float: right; }
 	float: right;
 	clear: both;
 }
+
+div.dokuwiki div.left_sidebar.full-width { width: 100%; }
+.sidebar-container { 
+	width: 19%; 
+	float: left; 
+	margin-right: 0.4em;
+}
