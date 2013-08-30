@@ -159,7 +159,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
         </div>
         <?php if(isset($INFO['userinfo'])) { ?>
 	        <div style="clear: both" class="left_sidebar full-width">
-	          <?php arctic_tpl_sidebar('left','private') ?>
+	          <?php arctic_tpl_sidebar('left','internal:private') ?>
 	        </div>
         <?php }?>
 	  </div> <!-- sidebar-container -->
