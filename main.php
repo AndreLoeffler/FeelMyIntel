@@ -80,44 +80,6 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
       <?php /*old includehook*/ @include(dirname(__FILE__).'/header.html')?>
       </div>
 
-      <?php if(!$toolb) { ?>
-      <?php if(!tpl_getConf('hideactions') || tpl_getConf('hideactions') && isset($_SERVER['REMOTE_USER'])) { ?>
-      <div class="bar" id="bar__top">
-        <div class="bar-left">
-          <?php 
-            if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
-                switch(tpl_getConf('wiki_actionlinks')) {
-                  case('buttons'):
-                    // check if new page button plugin is available
-                    if(!plugin_isdisabled('npd') && ($npd =& plugin_load('helper', 'npd'))) {
-                      $npd->html_new_page_button();
-                    }
-                    tpl_button('edit');
-					tpl_button('history');
-					if ((tpl_getConf('show_backlink') == 'top') || (tpl_getConf('show_backlink') == 'both')) {
-					tpl_button('backlink');
-					}
-                    break;
-                  case('links'):
-                    // check if new page button plugin is available
-                    if(!plugin_isdisabled('npd') && ($npd =& plugin_load('helper', 'npd'))) {
-                      $npd->html_new_page_button();
-                    }
-                    tpl_actionlink('edit');
-					tpl_actionlink('history');
-					if ((tpl_getConf('show_backlink') == 'top') || (tpl_getConf('show_backlink') == 'both')) {
-					tpl_actionlink('backlink');
-					}
-                    break;
-                }
-            }
-          ?>
-        </div>
-
-    </div>
-    <?php } ?>
-    <?php } ?>
-
     <?php /*old includehook*/ @include(dirname(__FILE__).'/pageheader.html')?>
 
     <?php flush()?>
@@ -244,16 +206,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
       </div>
     <?php } ?>
 
-      <div class="stylefoot">
-        <div class="meta">
-          <div class="user">
-          <?php tpl_userinfo()?>
-          </div>
-          <div class="doc">
-          <?php tpl_pageinfo()?>
-          </div>
-        </div>
-      </div>
+
 
     <div class="clearer"></div>
 
@@ -263,8 +216,60 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php if(!tpl_getConf('hideactions') || tpl_getConf('hideactions') && isset($_SERVER['REMOTE_USER'])) { ?>
     <?php if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) { ?>
     
-    <div class="bar">
-    	<div class="bar-right">
+    <div class="bar admin-bar" id="bar__bottom">
+    	<div class="bar-left">
+	      <div class="left-media">
+	        <?php 
+	          switch(tpl_getConf('wiki_actionlinks')) {
+	            case('buttons'):
+	            	tpl_button('edit');
+	                tpl_button('history');
+					if ((tpl_getConf('show_backlink') == 'bottom') || (tpl_getConf('show_backlink') == 'both')) {
+					tpl_button('backlink');
+					}
+	              break;
+	            case('links'):
+	            	tpl_actionlink('edit');
+	                tpl_actionlink('history');
+					if ((tpl_getConf('show_backlink') == 'bottom') || (tpl_getConf('show_backlink') == 'both')) {
+					tpl_actionlink('backlink');
+					}
+	              break;
+	          }
+	        ?>
+	      </div>
+
+	      <div class="left-media">
+	        <?php 
+	          switch(tpl_getConf('wiki_actionlinks')) {
+	            case('buttons'):
+					tpl_button('back');
+	                tpl_button('media');
+	                tpl_button('top');
+	              break;
+	            case('links'):
+					tpl_actionlink('back');
+	                tpl_actionlink('media');
+	                tpl_actionlink('top');
+	              break;
+	          }
+	        ?>
+	      </div>
+	      <div class="left-media">
+	        <?php 
+	          switch(tpl_getConf('wiki_actionlinks')) {
+	            case('buttons'):
+	                tpl_button('subscription');
+	              	break;
+	            case('links'):
+	                tpl_actionlink('subscription');
+	             	break;
+	          }
+	        ?>
+	      </div>
+    	</div>
+	      <div class="bar-right">
+    		<div class="right-log">
           <?php
 			switch(tpl_getConf('wiki_actionlinks')) {
               case('buttons'):
@@ -272,14 +277,8 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
                   tpl_button('admin');
                   tpl_button('revert');
                   tpl_button('profile');
-                  tpl_button('recent');
-                  tpl_button('index');
-                  tpl_button('register');
-                  tpl_button('login');
                   if(tpl_getConf('sidebar') == 'none') tpl_searchform();
                 } else {
-                  tpl_button('register');
-                  tpl_button('login');
                 }
                 break;
               case('links'):
@@ -287,11 +286,50 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
                   tpl_actionlink('admin');
                   tpl_actionlink('revert');
                   tpl_actionlink('profile');
+                  if(tpl_getConf('sidebar') == 'none') tpl_searchform();
+                } else {
+                }
+                break;
+            }
+          ?>
+    		
+    		</div>
+    		<div class="right-log">
+          <?php
+			switch(tpl_getConf('wiki_actionlinks')) {
+              case('buttons'):
+                if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
+                  tpl_button('recent');
+                  tpl_button('index');
+                } else {
+                }
+                break;
+              case('links'):
+                if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
                   tpl_actionlink('recent');
                   tpl_actionlink('index');
+                } else {
+                }
+                break;
+            }
+          ?>
+    		</div>
+    		<div class="right-log">
+          <?php
+			switch(tpl_getConf('wiki_actionlinks')) {
+              case('buttons'):
+                if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
+                  tpl_button('register');
+                  tpl_button('login');
+                } else {
+                  tpl_button('register');
+                  tpl_button('login');
+                }
+                break;
+              case('links'):
+                if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
                   tpl_actionlink('register');
                   tpl_actionlink('login');
-                  if(tpl_getConf('sidebar') == 'none') tpl_searchform();
                 } else {
                   tpl_actionlink('register');
                   tpl_actionlink('login');
@@ -299,48 +337,22 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
                 break;
             }
           ?>
+    		</div>
         </div>
-    </div>
-    
-    <div class="bar" id="bar__bottom">
-      <div class="bar-left">
-        <?php 
-          switch(tpl_getConf('wiki_actionlinks')) {
-            case('buttons'):
-                tpl_button('edit');
-                tpl_button('history');
-				if ((tpl_getConf('show_backlink') == 'bottom') || (tpl_getConf('show_backlink') == 'both')) {
-				tpl_button('backlink');
-				}
-              break;
-            case('links'):
-                tpl_actionlink('edit');
-                tpl_actionlink('history');
-				if ((tpl_getConf('show_backlink') == 'bottom') || (tpl_getConf('show_backlink') == 'both')) {
-				tpl_actionlink('backlink');
-				}
-              break;
-          }
-        ?>
-      </div>
-      <div class="bar-right">
-        <?php 
-          switch(tpl_getConf('wiki_actionlinks')) {
-            case('buttons'):
-		tpl_button('back');
-                tpl_button('media');
-                tpl_button('subscription');
-                tpl_button('top');
-              break;
-            case('links'):
-		tpl_actionlink('back');
-                tpl_actionlink('media');
-                tpl_actionlink('subscription');
-                tpl_actionlink('top');
-              break;
-          }
-        ?>
-      </div>
+        <div class="bar-right">
+            <div class="right-log">
+    		  <div class="stylefoot">
+		        <div class="meta">
+		          <div class="user">
+		          <?php tpl_userinfo()?>
+		          </div>
+		          <div class="doc">
+		          <?php tpl_pageinfo()?>
+		          </div>
+		        </div>
+		      </div>
+    		</div>
+        </div>
     </div>
     <div class="clearer"></div>
     <?php } ?>

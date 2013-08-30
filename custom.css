@@ -1,0 +1,32 @@
+.right-log {
+	clear: both;
+	float: right;
+}
+.left-media {
+	clear: both;
+	float: left;
+}
+
+div.dokuwiki .bar.admin-bar {
+	float: right;
+	background-color: white;
+}
+
+div.dokuwiki .bar.admin-bar .bar-left {
+	border: 1px solid black;
+}
+
+div.dokuwiki .bar.admin-bar .bar-right {
+	border: 1px solid black;
+	margin-left: 10px;
+}
+
+div.dokuwiki div.meta {
+	color: black;	
+}
+div.dokuwiki div.meta div.user { float: right; }
+
+.meta .doc {
+	float: right;
+	clear: both;
+}
