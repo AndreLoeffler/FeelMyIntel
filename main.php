@@ -162,6 +162,9 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 	          <?php arctic_tpl_sidebar('left','internal:private') ?>
 	        </div>
         <?php }?>
+        <div class="left_sidebar full-width">
+            <?php arctic_tpl_sidebar('left','calendar') ?>
+        </div>
 	  </div> <!-- sidebar-container -->
         
 		<div class="center_page border">

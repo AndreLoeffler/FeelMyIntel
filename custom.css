@@ -17,7 +17,7 @@ div.dokuwiki .bar.admin-bar .bar-left {
 }
 
 div.dokuwiki .bar.admin-bar .bar-left.footer {
-	margin-left: 10px;
+	margin-left: 11px;
 }
 
 div.dokuwiki .bar.admin-bar .bar-left.footer .footerinc {
@@ -79,4 +79,8 @@ div.dokuwiki div.full-width div.sidebar_box {
 	border-radius: 0px;
 	border: 1px solid black;
 	box-shadow: none;
+}
+
+body {
+	background-color: 
 }
