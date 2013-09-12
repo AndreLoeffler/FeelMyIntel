@@ -348,6 +348,10 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           ?>
     		</div>
         </div>
+        <div class="bar-left footer">
+		    <?php /*old includehook*/ @include(dirname(__FILE__).'/footer.html')?>
+        
+        </div>
         <div class="bar-right">
             <div class="right-log">
     		  <div class="stylefoot">
@@ -368,7 +372,6 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php } ?>
     <?php } ?>
 
-    <?php /*old includehook*/ @include(dirname(__FILE__).'/footer.html')?>
 
   </div>
 </div>

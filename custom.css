@@ -16,6 +16,19 @@ div.dokuwiki .bar.admin-bar .bar-left {
 	border: 1px solid black;
 }
 
+div.dokuwiki .bar.admin-bar .bar-left.footer {
+	margin-left: 10px;
+}
+
+div.dokuwiki .bar.admin-bar .bar-left.footer .footerinc {
+	border: none;
+	background-color: white;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	margin: 0 4px;
+	box-shadow: none;
+}
+
 div.dokuwiki .bar.admin-bar .bar-right {
 	border: 1px solid black;
 	margin-left: 10px;
