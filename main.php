@@ -39,6 +39,13 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
   <link rel="shortcut icon" href="<?php echo $favicon;?>" />
 
   <?php /*old includehook*/ @include(dirname(__FILE__).'/meta.html')?>
+  <script type="text/javascript">
+	  function ImageRefresh() {
+	      var unique = new Date();
+	      document.getElementById("webcam").src = "http://fmi-wuerzburg.de/webcam/webcam.jpg?time=" +  unique.getTime();
+	  }
+	  setInterval("ImageRefresh()",5000); 
+  </script>
 
 </head>
 <body>
@@ -59,6 +66,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 		<?php echo $conf['tagline']; ?>
 		</div>
 	  <?php endif ?>
+	  	<img src="http://fmi-wuerzburg.de/webcam/webcam.jpg" class="webcam" id="webcam" alt="Webcambild aus dem Fachschaftszimmer"></img>
       </div>
     
       <?php if(tpl_getConf('trace')) {?> 

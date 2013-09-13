@@ -1,3 +1,19 @@
+.webcam {
+	float: right;
+	height: 128px;
+	width: 128px;
+	margin-right: 25px;
+	border: 1px solid black;
+	
+}
+.webcam:hover {
+	height: 400px;
+	width: 400px;
+	border: 3px solid black;
+	position: absolute;
+	right: 0;
+}
+
 .right-log {
 	clear: both;
 	float: right;
