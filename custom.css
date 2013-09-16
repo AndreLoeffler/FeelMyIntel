@@ -3,8 +3,6 @@
 	height: 128px;
 	width: 128px;
 	margin-right: 25px;
-	border: 1px solid black;
-	
 }
 .webcam:hover {
 	height: 400px;
@@ -98,5 +96,5 @@ div.dokuwiki div.full-width div.sidebar_box {
 }
 
 body {
-	background-color: 
+	background-color: #E5ECF9;
 }
