@@ -16,12 +16,12 @@
 
 // must be run from within DokuWiki
 if (!defined('DOKU_INC')) die();
-
 global $ACT;
-
 // include custom arctictut template functions
 require_once(dirname(__FILE__).'/tpl_functions.php');
+
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang']?>"
@@ -46,7 +46,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 	  }
 	  setInterval("ImageRefresh()",5000); 
   </script>
-
+  
 </head>
 <body>
 <?php /*old includehook*/ @include(dirname(__FILE__).'/topheader.html')?>
@@ -385,6 +385,41 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 
 
   </div>
+</div>
+<div id ="submenu-container">
+	<div id="subcancel" style="">
+	</div>
+
+	<?php 
+		$dir = opendir('data/pages/submenu');
+		while (false !== ($files = readdir($dir))) {
+			if ($files != '.' && $files != '..') { 
+				$files = substr($files, 0, -4); ?>
+				<div class="submenu" id="submenu<?php echo $files; ?>">
+					<?php arctic_tpl_sidebar("left", "submenu:".$files); ?>
+				</div>
+			    <script type="text/javascript">
+			  		jQuery(document).ready(function() {
+				  		jQuery("a[title='submenu:<?php echo $files; ?>']").click(function(){
+				  			var _docHeight = jQuery(document).height();
+							jQuery("#subcancel").height(_docHeight);
+							var subs = document.getElementsByClassName('submenu');
+							jQuery('.submenu').hide();
+							jQuery("#submenu-container").toggle();
+							jQuery("#submenu<?php echo $files; ?>").toggle();
+							return false;
+						});
+			  		});
+		 		</script>
+			<?php 
+			}
+		}
+	?>
+	<script type="text/javascript">
+		jQuery('#subcancel').click(function() {
+			jQuery('#submenu-container').toggle();
+		});
+	</script>
 </div>
 
 <div class="no"><?php /* provide DokuWiki housekeeping, required in all templates */ tpl_indexerWebBug()?></div>

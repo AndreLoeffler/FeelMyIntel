@@ -95,6 +95,34 @@ div.dokuwiki div.full-width div.sidebar_box {
 	box-shadow: none;
 }
 
-body {
-	background-color: #E5ECF9;
+body div#wrapper {
+	border: 1px solid black;
+	box-shadow: none;
+}
+body div.headerinc {
+	background-image: none;
+	background-color: #525FEA;
+}
+
+#submenu-container {
+	display: none;
+}
+#subcancel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 900;
+}
+.submenu {
+	display: none;
+	position: absolute;
+	left: 200px;
+	top: 200px;
+	height: 200px;
+	width: 90px;
+	border: 1px solid black;
+	background-color: white;
+	z-index: 901;
+	
 }
