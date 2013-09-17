@@ -11,7 +11,7 @@ body {
   color: __text__;
   margin: __body_margin__;
   line-height: __line_height__;
-  background: __body_background__;
+  background: #fff0c1;
 }
 
 div#wrapper {
@@ -70,7 +70,7 @@ div.dokuwiki div.center_page {
 div.headerinc {
   border-top-left-radius:15px 15px;
   border-top-right-radius:15px 15px;
-  background-color: #525FEA;
+  background-color: #ff8900;
   margin-top: 0.1em;
   padding-left:25px;
   box-shadow:1px 3px 5px #6B6B6B;
@@ -163,7 +163,7 @@ div.dokuwiki div.right_sidebar div.level5 {
 div.dokuwiki div.left_sidebar ul,
 div.dokuwiki div.right_sidebar ul {
   margin-top: 0;
-  margin-left: 1.5em;
+  margin-left: 0;
 }
 
 div.dokuwiki div.sidebar_box {
@@ -178,18 +178,17 @@ div.dokuwiki div.sidebar_box {
 div.dokuwiki div.left_sidebar a.wikilink1, div.dokuwiki div.left_sidebar a.wikilink2, div.dokuwiki div.left_sidebar a.mail,
 div.dokuwiki div.right_sidebar a.wikilink1, div.dokuwiki div.right_sidebar a.wikilink2, div.dokuwiki div.right_sidebar a.mail {
   display: inline-block;
-  padding: 4px 5px 4px 5px;
+  padding: 4px 0 4px;
   font-weight: bold;
+  width: 100%;
+  color: #FF8900 !important;
 }
 
 div.dokuwiki div.left_sidebar a.wikilink1:hover,
 div.dokuwiki div.right_sidebar a.wikilink1:hover {
   text-decoration: none;
   color: white !important;
-  background-color: __extern__;
-  border-radius:5px;
-  box-shadow:3px 3px 5px #6B6B6B;
-  text-shadow:3px 3px 5px #6B6B6B;
+  background-color: #FF8900;
 }
 
 div.dokuwiki div.left_sidebar a.wikilink2:hover,
@@ -368,6 +367,10 @@ div.dokuwiki div.toc ul {
 
 div.dokuwiki div.tocheader {
   line-height: 110%;
+}
+
+div.dokuwiki div.toc_sidebar {
+	margin-top: 0.4em;
 }
 
 div.dokuwiki div.toc_sidebar div.tocheader {

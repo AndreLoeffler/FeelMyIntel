@@ -47,6 +47,15 @@ div.dokuwiki div.left_sidebar.full-width { width: 100%; }
 	margin-right: 0.4em;
 }
 
+.sidebar-container * ul {
+	margin-left: 0px;	
+}
+
+.sidebar-container * li {
+	list-style-type: none;
+}
+
+
 div.dokuwiki div.inclmeta { 
 	text-align: right;
 }
@@ -54,6 +63,7 @@ div.dokuwiki div.inclmeta {
 .plugin_include_content {
 	border: 1px solid black;
 	margin-bottom: 0.4em;
+	background-color: #FFF9E4;
 }
 div.dokuwiki .plugin_include_content h1 {
 	border-bottom: none;
