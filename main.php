@@ -66,7 +66,12 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 		<?php echo $conf['tagline']; ?>
 		</div>
 	  <?php endif ?>
-	  	<img src="http://fmi-wuerzburg.de/webcam/webcam.jpg" class="webcam" id="webcam" alt="Webcambild aus dem Fachschaftszimmer"></img>
+	  	<div class="webcam-container">
+		  	<img src="http://fmi-wuerzburg.de/webcam/webcam.jpg" class="webcam" id="webcam" alt="Webcambild aus dem Fachschaftszimmer"></img>
+		  	<noscript>
+		  		<div class="webcam-noscript">Kein JS: Statitsches Bild,<br>Seite neu laden zum aktualisieren.</div>
+		  	</noscript>
+	  	</div>
       </div>
     
       <?php if(tpl_getConf('trace')) {?> 

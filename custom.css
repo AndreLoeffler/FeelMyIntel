@@ -1,15 +1,33 @@
-.webcam {
+.webcam-container {
+	position: absolute;
 	float: right;
-	height: 128px;
-	width: 128px;
 	margin-right: 25px;
+	width: 128px;
+	top: 0px;
+	right: 0px;
 }
-.webcam:hover {
-	height: 400px;
+.webcam-container:hover {
 	width: 400px;
 	border: 3px solid black;
-	position: absolute;
-	right: 0;
+}
+
+.webcam-container .webcam-noscript {
+	display: none;
+	font-weight: bold;
+	text-align: center;
+}
+.webcam-container:hover .webcam-noscript {
+	display: block;
+}
+
+
+.webcam-container .webcam {
+	height: 128px;
+	width: 128px;
+}
+.webcam-container:hover .webcam {
+	height: 400px;
+	width: 400px;
 }
 
 .right-log {
