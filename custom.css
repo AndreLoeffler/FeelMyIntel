@@ -93,10 +93,15 @@ div.dokuwiki .bar {
 }
 
 #submenu-container {
-	display: none;
+	position: relative;
 }
+#submenu-container * .sidebar_box {
+	position: relative;
+}
+
 #subcancel {
 	position: absolute;
+	display: none;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -105,10 +110,7 @@ div.dokuwiki .bar {
 .submenu {
 	display: none;
 	position: absolute;
-	left: 200px;
-	top: 200px;
-	height: 200px;
-	width: 90px;
 	z-index: 901;
+	width: 336px;
 	
 }

@@ -167,6 +167,48 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
       <?php if(!arctic_tpl_sidebar_hide()) { ?>
 	  <div class="sidebar-container">
         <div class="left_sidebar full-width">
+
+	        <div id ="submenu-container">
+	          <?php 
+				$dir = opendir('data/pages/submenu');
+				while (false !== ($files = readdir($dir))) {
+					if ($files != '.' && $files != '..') { 
+						$files = substr($files, 0, -4); ?>
+						<div class="submenu left_sidebar" id="submenu<?php echo $files; ?>">
+							<?php arctic_tpl_sidebar("left", "submenu:".$files); ?>
+						</div>
+					    <script type="text/javascript">
+					  		jQuery(document).ready(function() {
+						  		jQuery("a[title='submenu:<?php echo $files; ?>']").click(function(){
+									jQuery("#subcancel").height(jQuery(document).height()).toggle();
+									jQuery("#submenu<?php echo $files; ?>").toggle();
+									return false;
+								});
+					  		});
+				 		</script>
+				 		<style type="text/css">
+				 			#submenu<?php echo $files; ?> {
+				 				left: <?php echo 30 + strlen($files)*8 ?>px;
+				 				<?php 
+				 					$out = array('*', '[', ']', ' ', ':', 'submenu');
+				 					$f = fopen('data/pages/sidebar.txt', 'r');
+				 					$height = -1;
+				 					if ($f) {
+										while(false !== ($buffer = fgets($f, 4096))) {
+											$height++;
+											@list($a, $b) = explode('|', str_replace($out, '', $buffer), 2);
+											if ($a == $files) { break; }
+										}
+									}
+				 				?>
+				 				top: <?php echo 4 + $height*27 ?>px;
+				 			}
+				 		</style>
+					<?php 
+					}
+				}
+			  ?>
+			</div>
           <?php if(tpl_getConf('search') == 'left') tpl_searchform() ?>
           <?php arctic_tpl_sidebar('left','sidebar') ?>
         </div>
@@ -175,6 +217,8 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 	          <?php arctic_tpl_sidebar('left','internal:private') ?>
 	        </div>
         <?php }?>
+        <!-- 
+         -->
         <div class="left_sidebar full-width">
             <?php arctic_tpl_sidebar('left','calendar') ?>
         </div>
@@ -388,42 +432,13 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php } ?>
     <?php } ?>
 
-
-	<div id ="submenu-container">
-		<div id="subcancel" style="">
-		</div>
-	
-		<?php 
-			$dir = opendir('data/pages/submenu');
-			while (false !== ($files = readdir($dir))) {
-				if ($files != '.' && $files != '..') { 
-					$files = substr($files, 0, -4); ?>
-					<div class="submenu left_sidebar" id="submenu<?php echo $files; ?>">
-						<?php arctic_tpl_sidebar("left", "submenu:".$files); ?>
-					</div>
-				    <script type="text/javascript">
-				  		jQuery(document).ready(function() {
-					  		jQuery("a[title='submenu:<?php echo $files; ?>']").click(function(){
-					  			var _docHeight = jQuery(document).height();
-								jQuery("#subcancel").height(_docHeight);
-								var subs = document.getElementsByClassName('submenu');
-								jQuery('.submenu').hide();
-								jQuery("#submenu-container").toggle();
-								jQuery("#submenu<?php echo $files; ?>").toggle();
-								return false;
-							});
-				  		});
-			 		</script>
-				<?php 
-				}
-			}
-		?>
+		<div id="subcancel" style=""></div>
 		<script type="text/javascript">
 			jQuery('#subcancel').click(function() {
-				jQuery('#submenu-container').toggle();
+				jQuery('#subcancel').toggle();
+				jQuery('.submenu').hide();
 			});
 		</script>
-	</div>
   </div><!-- close DokuWiki -->
 </div> 
 

@@ -256,12 +256,12 @@ div.dokuwiki form#dw__recent select {
 
 div.dokuwiki a:link,
 div.dokuwiki a:visited {
-  color: __extern__;
+  color: #FF8900;
   text-decoration: none;
 }
 div.dokuwiki a:hover,
 div.dokuwiki a:active {
-  color: __text__;
+  color: #FF8900 !important;
   text-decoration: underline;
 }
 
