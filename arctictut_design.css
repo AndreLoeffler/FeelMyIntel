@@ -17,12 +17,12 @@ body {
 div#wrapper {
   margin: auto;
   width: __wiki_width__;
-  border: 0px solid __border__;
+  border: 1px solid black;
   background: __background__;
   padding: __page_padding__;
   border-radius:20px;
-  box-shadow:5px 5px 10px #6B6B6B;
 }
+
 div#wrapper.media {
   width: __wiki_full_width__;
 }
@@ -56,29 +56,24 @@ div.dokuwiki div.right_page {
 }
 
 div.dokuwiki div.center_page {
-  margin-top:4px;
+  margin-top:3px;
   text-align: justify;
   float: left;
   width: 59% !important;
   width: 58%;
   padding: 2% !important;
   padding: 1%;
-  border: 0px solid __border__;
+  border: 1px solid black;
   background-color: __header_background__;
-  box-shadow:1px 1px 5px #6B6B6B;
-  border-radius:7px;
 }
 
 div.headerinc {
-  border: 0px solid __border__;
   border-top-left-radius:15px 15px;
   border-top-right-radius:15px 15px;
-  background-color:#bebebe;
+  background-color: #525FEA;
   margin-top: 0.1em;
   padding-left:25px;
   box-shadow:1px 3px 5px #6B6B6B;
-  background-image: url(images/body.png);
-  background-repeat:repeat-x;
 }
 
 div.tagline {
@@ -91,16 +86,9 @@ div.tagline {
   font-family:Courier New, Monospace;
 }
 
-div.footerinc {
-  box-shadow:1px 3px 5px #6B6B6B;
-}
-
 div.dokuwiki .footerinc {
-  border: 1px solid __border__;
-  background-color: #bebebe;
-  border-bottom-left-radius:15px 15px;
-  border-bottom-right-radius:15px 15px;
-  margin-top: 0.5em;
+  background-color: white;
+  margin: 0 4px;
 }
 
 div.dokuwiki .footerinc a img {
@@ -179,12 +167,11 @@ div.dokuwiki div.right_sidebar ul {
 }
 
 div.dokuwiki div.sidebar_box {
-  border: 1px solid __border__;
-  border-radius:7px;
-  box-shadow:1px 1px 5px #6B6B6B;
+  border: 1px solid black;
   margin-bottom: 0.2em;
   padding: 0.3em;
   overflow: hidden;
+  background-color: white;
 }
 
 /* ----- Links ---------------- */

@@ -34,28 +34,9 @@ div.dokuwiki .bar.admin-bar .bar-left.footer {
 	margin-left: 11px;
 }
 
-div.dokuwiki .bar.admin-bar .bar-left.footer .footerinc {
-	border: none;
-	background-color: white;
-	border-bottom-left-radius: 0;
-	border-bottom-right-radius: 0;
-	margin: 0 4px;
-	box-shadow: none;
-}
-
 div.dokuwiki .bar.admin-bar .bar-right {
 	border: 1px solid black;
 	margin-left: 10px;
-}
-
-div.dokuwiki div.meta {
-	color: black;	
-}
-div.dokuwiki div.meta div.user { float: right; }
-
-.meta .doc {
-	float: right;
-	clear: both;
 }
 
 div.dokuwiki div.left_sidebar.full-width { width: 100%; }
@@ -83,27 +64,6 @@ div.dokuwiki .bar {
 	margin-top: 0.4em;
 }
 
-div.dokuwiki div.center_page.border {
-	border: 1px solid black;
-	border-radius: 0px;
-	box-shadow: none;
-	margin-top: 3px;
-}
-div.dokuwiki div.full-width div.sidebar_box {
-	border-radius: 0px;
-	border: 1px solid black;
-	box-shadow: none;
-}
-
-body div#wrapper {
-	border: 1px solid black;
-	box-shadow: none;
-}
-body div.headerinc {
-	background-image: none;
-	background-color: #525FEA;
-}
-
 #submenu-container {
 	display: none;
 }
@@ -121,8 +81,6 @@ body div.headerinc {
 	top: 200px;
 	height: 200px;
 	width: 90px;
-	border: 1px solid black;
-	background-color: white;
 	z-index: 901;
 	
 }

@@ -175,7 +175,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
         </div>
 	  </div> <!-- sidebar-container -->
         
-		<div class="center_page border">
+		<div class="center_page">
 		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
         <?php
           $translation = &plugin_load('helper','translation');
@@ -384,43 +384,43 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php } ?>
 
 
-  </div>
-</div>
-<div id ="submenu-container">
-	<div id="subcancel" style="">
-	</div>
-
-	<?php 
-		$dir = opendir('data/pages/submenu');
-		while (false !== ($files = readdir($dir))) {
-			if ($files != '.' && $files != '..') { 
-				$files = substr($files, 0, -4); ?>
-				<div class="submenu" id="submenu<?php echo $files; ?>">
-					<?php arctic_tpl_sidebar("left", "submenu:".$files); ?>
-				</div>
-			    <script type="text/javascript">
-			  		jQuery(document).ready(function() {
-				  		jQuery("a[title='submenu:<?php echo $files; ?>']").click(function(){
-				  			var _docHeight = jQuery(document).height();
-							jQuery("#subcancel").height(_docHeight);
-							var subs = document.getElementsByClassName('submenu');
-							jQuery('.submenu').hide();
-							jQuery("#submenu-container").toggle();
-							jQuery("#submenu<?php echo $files; ?>").toggle();
-							return false;
-						});
-			  		});
-		 		</script>
-			<?php 
+	<div id ="submenu-container">
+		<div id="subcancel" style="">
+		</div>
+	
+		<?php 
+			$dir = opendir('data/pages/submenu');
+			while (false !== ($files = readdir($dir))) {
+				if ($files != '.' && $files != '..') { 
+					$files = substr($files, 0, -4); ?>
+					<div class="submenu left_sidebar" id="submenu<?php echo $files; ?>">
+						<?php arctic_tpl_sidebar("left", "submenu:".$files); ?>
+					</div>
+				    <script type="text/javascript">
+				  		jQuery(document).ready(function() {
+					  		jQuery("a[title='submenu:<?php echo $files; ?>']").click(function(){
+					  			var _docHeight = jQuery(document).height();
+								jQuery("#subcancel").height(_docHeight);
+								var subs = document.getElementsByClassName('submenu');
+								jQuery('.submenu').hide();
+								jQuery("#submenu-container").toggle();
+								jQuery("#submenu<?php echo $files; ?>").toggle();
+								return false;
+							});
+				  		});
+			 		</script>
+				<?php 
+				}
 			}
-		}
-	?>
-	<script type="text/javascript">
-		jQuery('#subcancel').click(function() {
-			jQuery('#submenu-container').toggle();
-		});
-	</script>
-</div>
+		?>
+		<script type="text/javascript">
+			jQuery('#subcancel').click(function() {
+				jQuery('#submenu-container').toggle();
+			});
+		</script>
+	</div>
+  </div><!-- close DokuWiki -->
+</div> 
 
 <div class="no"><?php /* provide DokuWiki housekeeping, required in all templates */ tpl_indexerWebBug()?></div>
 </body>
