@@ -1,8 +1,9 @@
 <?php
 /**
- * DokuWiki Template Arctic Functions
+ * DokuWiki Template FeelMyIntel Functions
  *
  * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @author  Andre Löfflerr <info@andre-loeffler.net>
  * @author  Michael Klier <chi@chimeric.de>
  */
 
@@ -40,7 +41,7 @@ switch($sbpos) {
  * 
  * @author Michael Klier <chi@chimeric.de>
  */
-function arctic_tpl_sidebar($pos,$pn) {
+function fmi_tpl_sidebar($pos,$pn) {
 
     $sb_order   = ($pos == 'left') ? explode(',', tpl_getConf('left_sidebar_order'))   : explode(',', tpl_getConf('right_sidebar_order'));
     $sb_content = ($pos == 'left') ? explode(',', tpl_getConf('left_sidebar_content')) : explode(',', tpl_getConf('right_sidebar_content'));
@@ -50,14 +51,14 @@ function arctic_tpl_sidebar($pos,$pn) {
         if(in_array($sb,$sb_content)) {
             $key = array_search($sb,$sb_content);
             unset($sb_content[$key]);
-            arctic_tpl_sidebar_dispatch($sb,$pos,$pn);
+            fmi_tpl_sidebar_dispatch($sb,$pos,$pn);
         }
     }
 
     // check for left content not specified by order
     if(is_array($sb_content) && !empty($sb_content) > 0) {
         foreach($sb_content as $sb) {
-            arctic_tpl_sidebar_dispatch($sb,$pos,$pn);
+            fmi_tpl_sidebar_dispatch($sb,$pos,$pn);
         }
     }
 }
@@ -67,7 +68,7 @@ function arctic_tpl_sidebar($pos,$pn) {
  *
  * @author Michael Klier <chi@chimeric.de>
  */
-function arctic_tpl_sidebar_dispatch($sb,$pos,$pn) {
+function fmi_tpl_sidebar_dispatch($sb,$pos,$pn) {
     global $lang;
     global $conf;
     global $ID;
@@ -364,7 +365,7 @@ function _getNsSb($id) {
  *
  * @author Michael Klier <chi@chimeric.de>
  */
-function arctic_tpl_sidebar_hide() {
+function fmi_tpl_sidebar_hide() {
     global $ACT;
     $act_hide = array( 'admin', 'conflict', 'media' );
     if(in_array($ACT, $act_hide)) {

@@ -1,9 +1,6 @@
-Arctictut Template for DokuWiki
+FeelMyIntel Template for DokuWiki
 
-Based on the Arctic Template by Michael Klier
+Based on the Arctic Template by Michael Klier and the Arctictut Template
 
-All documentation for the Arctic Template is available online at:
-http://dokuwiki.org/template:arctictut
-
-(c) 2013 by Laura Eun <laura.eun@live.de>
+(c) 2013 by Andre Löffler <info@andre-loeffler.net>
 See LICENSE for license info.

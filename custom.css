@@ -45,7 +45,7 @@ div.dokuwiki .bar.admin-bar {
 }
 
 div.dokuwiki .bar.admin-bar .bar-left {
-	border: 1px solid black;
+	border: __boxborder__;
 }
 
 div.dokuwiki .bar.admin-bar .bar-left.footer {
@@ -53,7 +53,7 @@ div.dokuwiki .bar.admin-bar .bar-left.footer {
 }
 
 div.dokuwiki .bar.admin-bar .bar-right {
-	border: 1px solid black;
+	border: __boxborder__;
 	margin-left: 10px;
 }
 
@@ -62,7 +62,7 @@ div.dokuwiki div.left_sidebar.full-width { width: 100%; }
 .sidebar-container { 
 	width: 19%; 
 	float: left; 
-	margin-right: 0.4em;
+	margin-right: __margin__;
 }
 
 .sidebar-container * ul {
@@ -79,9 +79,9 @@ div.dokuwiki div.inclmeta {
 }
 
 .plugin_include_content {
-	border: 1px solid black;
-	margin-bottom: 0.4em;
-	background-color: #FFF9E4;
+	border: __boxborder__;
+	margin-bottom: __margin__;
+	background-color: white;
 }
 div.dokuwiki .plugin_include_content h1 {
 	border-bottom: none;
@@ -89,7 +89,7 @@ div.dokuwiki .plugin_include_content h1 {
 
 div.dokuwiki .bar {
 	border: none;
-	margin-top: 0.4em;
+	margin-top: __margin__;
 }
 
 #submenu-container {
@@ -112,5 +112,23 @@ div.dokuwiki .bar {
 	position: absolute;
 	z-index: 901;
 	width: 336px;
-	
+}
+
+.admin-bar div {
+	background-color: white;
+}
+
+.admin_page {
+  	margin-top:3px;
+ 	text-align: justify;
+ 	float: left;
+ 	width: 98%;
+	padding: 2% !important;
+ 	padding: 1%;
+ 	border: __boxborder__;
+ 	background-color: white;
+}
+
+.stylehead {
+	margin-bottom: 1em;
 }

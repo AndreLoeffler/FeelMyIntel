@@ -1,6 +1,6 @@
 <?php
 /**
- * DokuWiki Arctic Template
+ * DokuWiki FeelMyIntel Template
  *
  * This is the template you need to change for the overall look
  * of DokuWiki.
@@ -8,16 +8,16 @@
  * You should leave the doctype at the very top - It should
  * always be the very first line of a document.
  *
+ * @author Andre Löffler <info@andre-loeffler.net>
  * @author Andreas Gohr <andi@splitbrain.org>
  * @author Michael Klier <chi@chimeric.de>
  * @author Laura Eun <laura.eun@live.de>
- * @link   http://www.dokuwiki.org/template:arctictut
  */
 
 // must be run from within DokuWiki
 if (!defined('DOKU_INC')) die();
 global $ACT;
-// include custom arctictut template functions
+// include custom fmi template functions
 require_once(dirname(__FILE__).'/tpl_functions.php');
 
 ?>
@@ -74,22 +74,6 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 	  	</div>
       </div>
     
-      <?php if(tpl_getConf('trace')) {?> 
-      <div class="breadcrumbs">
-        <?php ($conf['youarehere'] != 1) ? tpl_breadcrumbs() : tpl_youarehere();?>
-		<?php if (tpl_getConf('translation_bar') == 'breadcrumbs') { ?>
-		<div style="float:right;">
-		 <?php
-          $translation = &plugin_load('helper','translation');
-          if ($translation) echo $translation->showTranslations();
-         ?>
-		</div>
-		<?php
-		}
-		?>
-      </div>
-      <?php } ?>
-
       <?php /*old includehook*/ @include(dirname(__FILE__).'/header.html')?>
       </div>
 
@@ -98,11 +82,11 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php flush()?>
 
     <?php if(tpl_getConf('sidebar') == 'left') { ?>
-      <?php if(!arctic_tpl_sidebar_hide()) { ?>
+      <?php if(!fmi_tpl_sidebar_hide()) { ?>
       <div class="sidebar-container">
         <div class="left_sidebar full-width">
           <?php tpl_searchform() ?>
-          <?php arctic_tpl_sidebar('left') ?>
+          <?php fmi_tpl_sidebar('left') ?>
         </div>
         <div class="right_page">
 		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
@@ -126,12 +110,14 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
       </div>
       <?php } else { ?>
         <div class="page">
-          <?php tpl_content()?> 
+          <div class="center-page">
+	          <?php tpl_content()?> 
+          </div>
         </div> 
       <?php } ?>
 
     <?php } elseif(tpl_getConf('sidebar') == 'right') { ?>
-      <?php if(!arctic_tpl_sidebar_hide()) { ?>
+      <?php if(!fmi_tpl_sidebar_hide()) { ?>
 	  <div class="sidebar-container">
 		<div class="left_page">
 		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
@@ -154,7 +140,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
         </div>
         <div class="right_sidebar">
           <?php tpl_searchform() ?>
-          <?php arctic_tpl_sidebar('right') ?>
+          <?php fmi_tpl_sidebar('right') ?>
         </div>
       </div>
       <?php } else { ?>
@@ -164,7 +150,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
       <?php }?>
 
     <?php } elseif(tpl_getConf('sidebar') == 'both') { ?>
-      <?php if(!arctic_tpl_sidebar_hide()) { ?>
+      <?php if(!fmi_tpl_sidebar_hide()) { ?>
 	  <div class="sidebar-container">
         <div class="left_sidebar full-width">
 
@@ -175,7 +161,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 					if ($files != '.' && $files != '..') { 
 						$files = substr($files, 0, -4); ?>
 						<div class="submenu left_sidebar" id="submenu<?php echo $files; ?>">
-							<?php arctic_tpl_sidebar("left", "submenu:".$files); ?>
+							<?php fmi_tpl_sidebar("left", "submenu:".$files); ?>
 						</div>
 					    <script type="text/javascript">
 					  		jQuery(document).ready(function() {
@@ -210,17 +196,17 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 			  ?>
 			</div>
           <?php if(tpl_getConf('search') == 'left') tpl_searchform() ?>
-          <?php arctic_tpl_sidebar('left','sidebar') ?>
+          <?php fmi_tpl_sidebar('left','sidebar') ?>
         </div>
         <?php if(isset($INFO['userinfo'])) { ?>
 	        <div style="clear: both" class="left_sidebar full-width">
-	          <?php arctic_tpl_sidebar('left','internal:private') ?>
+	          <?php fmi_tpl_sidebar('left','internal:private') ?>
 	        </div>
         <?php }?>
         <!-- 
          -->
         <div class="left_sidebar full-width">
-            <?php arctic_tpl_sidebar('left','calendar') ?>
+            <?php fmi_tpl_sidebar('left','calendar') ?>
         </div>
 	  </div> <!-- sidebar-container -->
         
@@ -244,12 +230,30 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 		?>
         </div>
         <div class="right_sidebar">
-          <?php if(tpl_getConf('search') == 'right') tpl_searchform() ?>
-          <?php arctic_tpl_sidebar('right', 'sidebar') ?>
+          <?php if(tpl_getConf('search') == 'right') ?>
+	          <?php if(tpl_getConf('trace')) {?> 
+			      <div class="breadcrumbs">
+			        <?php ($conf['youarehere'] != 1) ? tpl_breadcrumbs() : tpl_youarehere();?>
+					<?php if (tpl_getConf('translation_bar') == 'breadcrumbs') { ?>
+					<div style="float:right;">
+					 <?php
+			          $translation = &plugin_load('helper','translation');
+			          if ($translation) echo $translation->showTranslations();
+			         ?>
+					</div>
+					<?php
+					}
+					?>
+			      </div>
+		      <?php } ?>
+          	<?php tpl_searchform() ?>
+          <?php fmi_tpl_sidebar('right', 'sidebar') ?>
         </div>
       <?php } else { ?>
         <div class="page">
-          <?php tpl_content()?> 
+        	<div class="admin_page">
+          		<?php tpl_content()?> 
+        	</div>
         </div> 
       <?php }?>
 

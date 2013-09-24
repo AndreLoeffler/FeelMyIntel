@@ -1,6 +1,7 @@
 /**
  * Design elements for default Template
  *
+ * @author Andre Löffler <info@andre-loeffler.net>
  * @author Andreas Gohr <andi@splitbrain.org>
  * @author Anika Henke <anika@selfthinker.org>
  */
@@ -11,7 +12,6 @@
 
 body {
   font: 80% "Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif;
-  background-color: __background__;
   color: __text__;
 }
 
@@ -200,7 +200,7 @@ div.dokuwiki button.button {
   font-size: 100%;
   cursor: pointer;
   margin: 1px;
-  padding: 0.125em 0.4em;
+  padding: 0.125em __margin__;
 }
 
 /* nice alphatransparency background except for IE <7 */
@@ -256,12 +256,12 @@ div.dokuwiki form#dw__recent select {
 
 div.dokuwiki a:link,
 div.dokuwiki a:visited {
-  color: #FF8900;
+  color: #4369ee;
   text-decoration: none;
 }
 div.dokuwiki a:hover,
 div.dokuwiki a:active {
-  color: #FF8900 !important;
+  color: #4369ee !important;
   text-decoration: underline;
 }
 

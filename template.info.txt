@@ -1,7 +1,7 @@
-base     arctictut
-author   Laura Eun
-email    laura.eun@live.de
-date     2013-08-28
-name     Arctic TuT
-desc     A modified version of the popular Arctic Template
-url      https://www.dokuwiki.org/template:arctictut
+base     fmi
+author   Andre Löffler
+email    info@andre-loeffler.net
+date     2013-02-24
+name     FeelMyIntel
+desc     A modified version of the popular Arctictut Template
+url      https://github.com/AndreLoeffler/FeelMyIntel

@@ -1,8 +1,9 @@
 <?php
 /**
- * Default configuration for the arctic template
+ * Default configuration for the FeelMyIntel template
  * 
  * @license:    GPL 2 (http://www.gnu.org/licenses/gpl.html)
+ * @author:		Andre Löffler <info@andre-loeffler.net>
  * @author:     Michael Klier <chi@chimeric.de>
  */
 

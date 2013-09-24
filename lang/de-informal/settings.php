@@ -1,6 +1,6 @@
 <?php
 /**
- * German Language file for the Arctic Template
+ * German Language file for the FeelMyIntel Template
  * 
  * @author:     Michael Klier <chi@chimeric.de>
  */

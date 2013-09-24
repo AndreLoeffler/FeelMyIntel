@@ -1,6 +1,6 @@
 <?php
 /**
- * polish language file for the Arctic Template
+ * polish language file for the FeelMyIntel Template
  */
 
 $lang['sidebar']                        = "położenie menu (bocznego panelu)";

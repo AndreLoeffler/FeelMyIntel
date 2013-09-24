@@ -1,24 +1,27 @@
 /**
- * Design Elements - additional  CSS for the Arctictut template
+ * Design Elements - additional  CSS for the FeelMyIntel template
  *
  * @author Michael Klier <chi@chimeric.de>
  * @author Laura Eun <laura.eun@live.de>
  */
 
 /* ----- General Elements ----- */
+
+html {
+	background: url(images/fmi/gebaude.jpg) no-repeat center center fixed;
+	background-size: cover;
+}
+
 body {
   font: __font_size__ Verdana, "Lucida Grande", Lucida, Helvetica, Arial, sans-serif;
   color: __text__;
   margin: __body_margin__;
   line-height: __line_height__;
-  background: #fff0c1;
 }
 
 div#wrapper {
   margin: auto;
   width: __wiki_width__;
-  border: 1px solid black;
-  background: __background__;
   padding: __page_padding__;
   border-radius:20px;
 }
@@ -62,14 +65,14 @@ div.dokuwiki div.center_page {
   width: 58%;
   padding: 2% !important;
   padding: 1%;
-  border: 1px solid black;
-  background-color: __header_background__;
+  border: __boxborder__;
+  background-color: white;
 }
 
 div.headerinc {
   border-top-left-radius:15px 15px;
   border-top-right-radius:15px 15px;
-  background-color: #ff8900;
+  background-color: white;
   margin-top: 0.1em;
   padding-left:25px;
   box-shadow:1px 3px 5px #6B6B6B;
@@ -105,6 +108,9 @@ div.dokuwiki div.right_sidebar div.secedit {
 div.dokuwiki div.left_sidebar div.breadcrumbs,
 div.dokuwiki div.right_sidebar div.breadcrumbs {
     margin-left: 0;
+    border: __boxborder__;
+    background-color: white;
+    margin-bottom: __margin__;
 }
 
 
@@ -167,8 +173,8 @@ div.dokuwiki div.right_sidebar ul {
 }
 
 div.dokuwiki div.sidebar_box {
-  border: 1px solid black;
-  margin-bottom: 0.2em;
+  border: __boxborder__;
+  margin-bottom: __margin__;
   padding: 0.3em;
   overflow: hidden;
   background-color: white;
@@ -181,14 +187,13 @@ div.dokuwiki div.right_sidebar a.wikilink1, div.dokuwiki div.right_sidebar a.wik
   padding: 4px 0 4px;
   font-weight: bold;
   width: 100%;
-  color: #FF8900 !important;
 }
 
 div.dokuwiki div.left_sidebar a.wikilink1:hover,
 div.dokuwiki div.right_sidebar a.wikilink1:hover {
   text-decoration: none;
   color: white !important;
-  background-color: #FF8900;
+  background-color: #4369ee;
 }
 
 div.dokuwiki div.left_sidebar a.wikilink2:hover,
@@ -365,7 +370,7 @@ div.dokuwiki div.tocheader {
 }
 
 div.dokuwiki div.toc_sidebar {
-	margin-top: 0.4em;
+	margin-top: __margin__;
 }
 
 div.dokuwiki div.toc_sidebar div.tocheader {
@@ -393,7 +398,7 @@ div.dokuwiki div.right_sidebar div.ajax_qsearch {
   background: __background_neu__;
   font-size: 85%;
   width: 95.5%;
-  margin: 0.2em 0 0.5em 0;
+  margin: __margin__ 0 0.5em 0;
 }
 
 div.dokuwiki div#bar__top div.ajax_qsearch {
