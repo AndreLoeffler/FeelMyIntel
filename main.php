@@ -204,6 +204,11 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           <?php if(tpl_getConf('search') == 'left') tpl_searchform() ?>
           <?php fmi_tpl_sidebar('left','sidebar') ?>
         </div>
+        <div class="left-sidebar full-width">
+        	<div class="main_sidebar sidebar_box">
+	        	<?php tpl_searchform() ?>
+        	</div>
+        </div>
         <?php if(isset($INFO['userinfo'])) { ?>
 	        <div style="clear: both" class="left_sidebar full-width">
 	          <?php fmi_tpl_sidebar('left','internal:private') ?>
@@ -235,26 +240,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 		}
 		?>
         </div>
-        <div class="right_sidebar">
-          <?php if(tpl_getConf('search') == 'right') ?>
-	          <?php if(tpl_getConf('trace')) {?> 
-			      <div class="breadcrumbs">
-			        <?php ($conf['youarehere'] != 1) ? tpl_breadcrumbs() : tpl_youarehere();?>
-					<?php if (tpl_getConf('translation_bar') == 'breadcrumbs') { ?>
-					<div style="float:right;">
-					 <?php
-			          $translation = &plugin_load('helper','translation');
-			          if ($translation) echo $translation->showTranslations();
-			         ?>
-					</div>
-					<?php
-					}
-					?>
-			      </div>
-		      <?php } ?>
-          	<?php tpl_searchform() ?>
-          <?php fmi_tpl_sidebar('right', 'sidebar') ?>
-        </div>
+        
       <?php } else { ?>
         <div class="page">
         	<div class="admin_page">

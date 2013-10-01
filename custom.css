@@ -60,7 +60,7 @@ div.dokuwiki .bar.admin-bar .bar-right {
 div.dokuwiki div.left_sidebar.full-width { width: 100%; }
 
 .sidebar-container { 
-	width: 19%; 
+	width: 24%; 
 	float: left; 
 	margin-right: __margin__;
 }
