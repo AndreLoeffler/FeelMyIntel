@@ -70,6 +70,8 @@ div.dokuwiki div.center_page {
   float: right;
 }
 
+div.dokuwiki div.center_page * img { max-width: 100%; }
+
 div.headerinc {
   border-top-left-radius:15px 15px;
   border-top-right-radius:15px 15px;
