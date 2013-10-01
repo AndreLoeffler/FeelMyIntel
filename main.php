@@ -184,8 +184,11 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 					 					if ($f) {
 											while(false !== ($buffer = fgets($f, 4096))) {
 												$height++;
-												@list($a, $b) = explode('|', str_replace($out, '', $buffer), 2);
-												if ($a == $files) { break; }
+												$buffer = strtolower(str_replace($out, '', $buffer));
+												if (strpos($buffer, '|')) {
+													@list($buffer, $b) = explode('|', $buffer, 2);
+												} 
+												if ($buffer == $files) { break; }
 											}
 										}
 					 				?>
