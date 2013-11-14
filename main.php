@@ -202,20 +202,18 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 			  ?>
 			</div>
           <?php if(tpl_getConf('search') == 'left') tpl_searchform() ?>
-          <?php fmi_tpl_sidebar('left','sidebar') ?>
+	          <?php fmi_tpl_sidebar('left','sidebar') ?>
         </div>
-        <div class="left-sidebar full-width">
+	      <div style="clear:both;" class="left-sidebar full-width">
         	<div class="main_sidebar sidebar_box">
 	        	<?php tpl_searchform() ?>
         	</div>
-        </div>
+          </div>
         <?php if(isset($INFO['userinfo'])) { ?>
 	        <div style="clear: both" class="left_sidebar full-width">
 	          <?php fmi_tpl_sidebar('left','internal:private') ?>
 	        </div>
         <?php }?>
-        <!-- 
-         -->
         <div class="left_sidebar full-width">
             <?php fmi_tpl_sidebar('left','calendar') ?>
         </div>
