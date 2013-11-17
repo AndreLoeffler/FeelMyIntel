@@ -62,7 +62,6 @@ div.dokuwiki div.left_sidebar.full-width { width: 100%; }
 .sidebar-container { 
 	width: 24%; 
 	float: left; 
-	margin-right: __margin__;
 }
 
 .sidebar-container * ul {
