@@ -50,6 +50,7 @@ div.dokuwiki .bar {
 
 div.dokuwiki .bar-left {
   float: left;
+  margin-right: 11px;
 }
 
 div.dokuwiki .bar-right {

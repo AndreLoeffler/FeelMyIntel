@@ -40,16 +40,12 @@
 }
 
 div.dokuwiki .bar.admin-bar {
-	float: right;
 	background-color: white;
+	padding-left: 0px;
 }
 
 div.dokuwiki .bar.admin-bar .bar-left {
 	border: __boxborder__;
-}
-
-div.dokuwiki .bar.admin-bar .bar-left.footer {
-	margin-left: 11px;
 }
 
 div.dokuwiki .bar.admin-bar .bar-right {
@@ -130,4 +126,11 @@ div.dokuwiki .bar {
 
 .stylehead {
 	margin-bottom: 1em;
+}
+
+div.bar-left.footer {
+	max-width: 40%;
+}
+div.footerinc * {
+	float: left;
 }
