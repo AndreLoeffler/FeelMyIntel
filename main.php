@@ -52,8 +52,12 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 <?php /*old includehook*/ @include(dirname(__FILE__).'/topheader.html')?>
 <div id="wrapper" class='<?php echo $ACT ?>'>
   <div class="dokuwiki">
-
-    <?php html_msgarea()?>
+	
+    <?php
+    	if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) { 
+    		html_msgarea();
+    	}
+    ?>
 	<?php
 	// get logo either out of the template images folder or data/media folder
     $logo = tpl_getMediaFile(array(':wiki:'.tpl_getConf('logoname'), ':'.tpl_getConf('logoname'), 'images/'.tpl_getConf('logoname')), true);
