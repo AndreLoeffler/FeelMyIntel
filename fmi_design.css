@@ -46,6 +46,9 @@ div.dokuwiki div.right_sidebar {
 div.dokuwiki div.page {
   text-align: justify;
   padding-top: 0;
+  background-color: white;
+  border: __boxborder__;
+  padding: __margin__;
 }
 
 div.dokuwiki div.left_page,
