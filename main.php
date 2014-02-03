@@ -39,13 +39,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
   <link rel="shortcut icon" href="<?php echo $favicon;?>" />
 
   <?php /*old includehook*/ @include(dirname(__FILE__).'/meta.html')?>
-  <script type="text/javascript">
-	  function ImageRefresh() {
-	      var unique = new Date();
-	      document.getElementById("webcam").src = "http://fmi-wuerzburg.de/webcam/webcam.jpg?time=" +  unique.getTime();
-	  }
-	  setInterval("ImageRefresh()",5000); 
-  </script>
+
   
 </head>
 <body>
@@ -65,16 +59,8 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <div class="stylehead">
       <div class="headerinc">
       <a href="<?php echo $url?>?id=start" accesskey="h" title="[[START]]" name="dokuwiki__top"><img src="<?php echo $logo?>" width="<?php echo tpl_getConf('logowidth') ?>" height="<?php echo tpl_getConf('logoheigth') ?>" border="0" /></a>
-	  <?php if ($conf['tagline']): ?>
-		<div class="tagline">
-		<?php echo $conf['tagline']; ?>
-		</div>
-	  <?php endif ?>
 	  	<div class="webcam-container">
-		  	<img src="http://fmi-wuerzburg.de/webcam/webcam.jpg" class="webcam" id="webcam" alt="Webcambild aus dem Fachschaftszimmer"></img>
-		  	<noscript>
-		  		<div class="webcam-noscript">Kein JS: Statitsches Bild,<br>Seite neu laden zum aktualisieren.</div>
-		  	</noscript>
+			<?php fmi_tpl_webcam(tpl_getConf('webcam_path'),tpl_getConf('webcam_time')); ?>
 	  	</div>
       </div>
     
@@ -92,119 +78,16 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           <?php tpl_searchform() ?>
           <?php fmi_tpl_sidebar('left') ?>
         </div>
-        <div class="right_page">
-		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
-          <?php
-          $translation = &plugin_load('helper','translation');
-          if ($translation) echo $translation->showTranslations();
-         ?>
-		<?php
-		}
-		?>
-          <?php ($notoc) ? tpl_content(false) : tpl_content() ?>
-		  <?php if (tpl_getConf('translation_bar') == 'bottom' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
-          <?php
-          $translation = &plugin_load('helper','translation');
-          if ($translation) echo $translation->showTranslations();
-         ?>
-		<?php
-		}
-		?>
-        </div>
       </div>
-      <?php } else { ?>
-        <div class="page">
-          <div class="center-page">
-	          <?php tpl_content()?> 
-          </div>
-        </div> 
       <?php } ?>
-
-    <?php } elseif(tpl_getConf('sidebar') == 'right') { ?>
-      <?php if(!fmi_tpl_sidebar_hide()) { ?>
-	  <div class="sidebar-container">
-		<div class="left_page">
-		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
-          <?php
-          $translation = &plugin_load('helper','translation');
-          if ($translation) echo $translation->showTranslations();
-         ?>
-		<?php
-		}
-		?>
-          <?php ($notoc) ? tpl_content(false) : tpl_content() ?>
-		<?php if (tpl_getConf('translation_bar') == 'bottom' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
-          <?php
-          $translation = &plugin_load('helper','translation');
-          if ($translation) echo $translation->showTranslations();
-         ?>
-		<?php
-		}
-		?>
-        </div>
-        <div class="right_sidebar">
-          <?php tpl_searchform() ?>
-          <?php fmi_tpl_sidebar('right') ?>
-        </div>
-      </div>
-      <?php } else { ?>
-        <div class="page">
-          <?php tpl_content() ?> 
-        </div> 
-      <?php }?>
 
     <?php } elseif(tpl_getConf('sidebar') == 'both') { ?>
       <?php if(!fmi_tpl_sidebar_hide()) { ?>
 	  <div class="sidebar-container">
         <div class="left_sidebar full-width">
-
-	        <div id ="submenu-container">
-	          <?php 
-	          	$tar = 'data/pages/submenu';
-				if (is_dir($tar)) {
-					$dir = opendir($tar);
-					while (false !== ($files = readdir($dir))) {
-						if ($files != '.' && $files != '..') { 
-							$files = substr($files, 0, -4); ?>
-							<div class="submenu left_sidebar" id="submenu<?php echo $files; ?>">
-								<?php fmi_tpl_sidebar("left", "submenu:".$files); ?>
-							</div>
-						    <script type="text/javascript">
-						  		jQuery(document).ready(function() {
-							  		jQuery("a[title='submenu:<?php echo $files; ?>']").click(function(){
-										jQuery("#subcancel").height(jQuery(document).height()).toggle();
-										jQuery("#submenu<?php echo $files; ?>").toggle();
-										return false;
-									});
-						  		});
-					 		</script>
-					 		<style type="text/css">
-					 			#submenu<?php echo $files; ?> {
-					 				left: <?php echo 30 + strlen($files)*8 ?>px;
-					 				<?php 
-					 					$out = array('*', '[', ']', ' ', ':', 'submenu');
-					 					$f = fopen('data/pages/sidebar.txt', 'r');
-					 					$height = -1;
-					 					if ($f) {
-											while(false !== ($buffer = fgets($f, 4096))) {
-												$height++;
-												$buffer = strtolower(str_replace($out, '', $buffer));
-												if (strpos($buffer, '|')) {
-													@list($buffer, $b) = explode('|', $buffer, 2);
-												} 
-												if ($buffer == $files) { break; }
-											}
-										}
-					 				?>
-					 				top: <?php echo 4 + $height*27 ?>px;
-					 			}
-					 		</style>
-						<?php 
-						}
-					}
-				}
-			  ?>
-			</div>
+          <div id ="submenu-container">
+          	<?php fmi_tpl_submenus(tpl_getConf('submenu_name'));?>
+	      </div>
           <?php if(tpl_getConf('search') == 'left') tpl_searchform() ?>
 	          <?php fmi_tpl_sidebar('left','sidebar') ?>
         </div>
@@ -272,8 +155,6 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 		?>
       </div>
     <?php } ?>
-
-
 
     <div class="clearer"></div>
 
@@ -430,13 +311,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <?php } ?>
     <?php } ?>
 
-		<div id="subcancel" style=""></div>
-		<script type="text/javascript">
-			jQuery('#subcancel').click(function() {
-				jQuery('#subcancel').toggle();
-				jQuery('.submenu').hide();
-			});
-		</script>
+
   </div><!-- close DokuWiki -->
 </div> 
 

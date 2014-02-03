@@ -375,5 +375,70 @@ function fmi_tpl_sidebar_hide() {
     }
 }
 
-// vim:ts=4:sw=4:et:enc=utf-8:
-?>
+function fmi_tpl_webcam($path, $time) {
+	echo "<img src='".$path."' class='webcam' id='webcam' alt='Webcambild aus dem Fachschaftszimmer'></img>
+		    <script type='text/javascript'>
+			  function ImageRefresh() {
+			    var unique = new Date();
+			      document.getElementById('webcam').src = '".$path."?time=' +  unique.getTime();
+			    }
+			  setInterval('ImageRefresh()',".$time."); 
+			</script>
+		  	<noscript>
+		  		<div class='webcam-noscript'>Kein JS: Statitsches Bild,<br>Seite neu laden zum aktualisieren.</div>
+		  	</noscript>";
+}
+
+function fmi_tpl_submenus($space) {
+	$tar = 'data/pages/'.$space;
+	if (is_dir($tar)) {
+		$dir = opendir($tar);
+		while (false !== ($files = readdir($dir))) {
+			if ($files != '.' && $files != '..') {
+						$files = substr($files, 0, -4);
+						echo '<div class="submenu left_sidebar" id="submenu'.$files.'">';
+							fmi_tpl_sidebar("left", $space.":".$files);
+						echo '</div>';
+						fmi_tpl_makeSubmenuScript($space,$files);
+						fmi_tpl_makeCssRules($space,$files);
+				}
+			}
+	}
+	echo '<div id="subcancel" style=""></div>';
+	echo '<script type="text/javascript">';
+	echo 'jQuery("#subcancel").click(function() {';
+	echo '	jQuery("#subcancel").toggle();';
+	echo '  jQuery(".submenu").hide();});';
+	echo '</script>';
+}
+
+function fmi_tpl_makeSubmenuScript($space,$files){
+	echo   '<script type="text/javascript">';
+	echo   '	jQuery(document).ready(function() {';
+	echo   '		jQuery("a[title=\''.$space.':'.$files.'\']").click(function(){
+						jQuery("#subcancel").height(jQuery(document).height()).toggle();
+						jQuery("#submenu'.$files.'").toggle();
+						return false;
+					});
+		  		});
+	 		</script>';
+}
+
+function fmi_tpl_makeCssRules($space,$files){
+	$out = array('*', '[', ']', ' ', ':', $space);
+	$f = fopen('data/pages/sidebar.txt', 'r');
+	$height = -1;
+	if ($f) {
+		while(false !== ($buffer = fgets($f, 4096))) {
+			$height++;
+			if (strpos($buffer = strtolower(str_replace($out, '', $buffer)), '|')) @list($buffer, $b) = explode('|', $buffer, 2);
+			if ($buffer == $files) break;
+			}
+	}
+	
+	echo '<style type="text/css">';
+    echo '	#submenu'.$files.' {';
+	echo '    left: '.(30 + strlen($files)*8).'px; top: '.(4 + $height*27).'px;';
+	echo '  }';
+	echo '</style>';
+}

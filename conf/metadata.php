@@ -28,5 +28,7 @@ $meta['show_backlink']            = array('multichoice', '_choices' => array('no
 //$meta['sidebar_width_left']       = array('string', '_pattern' => '#[a-z0-9]*#');
 //$meta['sidebar_width_right']      = array('string', '_pattern' => '#[a-z0-9]*#');
 $meta['translation_bar']          = array('multichoice', '_choices' => array('none', 'breadcrumbs', 'top', 'bottom', 'top and bottom'));
-//Setup vim:ts=2:sw=2:
+$meta['webcam_path']			  = array('string');
+$meta['webcam_time']			  = array('numeric');
+$meta['submenu_name']			  = array('string', '_pattern' => '#^[a-z:]*#');
 ?>

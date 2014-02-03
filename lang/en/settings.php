@@ -28,4 +28,6 @@ $lang['show_backlink']                  = "Position of the Backlink link";
 //$lang['sidebar_width_left']             = "Width of the left sidebar in percent";
 //$lang['sidebar_width_right']            = "Width of the right sidebar in percent";
 $lang['translation_bar']                = "Position of the Translation Bar";
-// vim:ts=4:sw=4:et:enc=utf-8:
+$lang['webcam_path']					= "Path to webcam-created image file";
+$lang['webcam_time']					= "Webcam image refreshrate";
+$lang['submenu_name']					= "Name of submenu namespace";

@@ -28,5 +28,8 @@ $conf['show_backlink']              = 'both';                       // show back
 //$conf['sidebar_width_left']         = '19';                        // width right sidebar
 //$conf['sidebar_width_right']        = '16';                        // width right sidebar
 $conf['translation_bar']            = 'top and bottom';             // Position of the Translationbar
+$conf['webcam_path']				= 'http://fmi-wuerzburg.de/webcam/webcam.jpg'; //route to webcam-image
+$conf['webcam_time']				= '5000';						//timeout for refreshing webcam image
+$conf['submenu_name']				= 'submenu';					//name for submenu-creator
 //Setup vim: ts=2 sw=2:
 ?>
