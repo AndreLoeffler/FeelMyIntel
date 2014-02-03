@@ -3,7 +3,7 @@
  * DokuWiki Template FeelMyIntel Functions
  *
  * @license GPL 2 (http://www.gnu.org/licenses/gpl.html)
- * @author  Andre Löfflerr <info@andre-loeffler.net>
+ * @author  Andre Löffler <info@andre-loeffler.net>
  * @author  Michael Klier <chi@chimeric.de>
  */
 
@@ -12,55 +12,18 @@ if (!defined('DOKU_INC')) die();
 if (!defined('DOKU_LF')) define('DOKU_LF',"\n");
 
 // load sidebar contents
-$sbl   = explode(',',tpl_getConf('left_sidebar_content'));
-$sbr   = explode(',',tpl_getConf('right_sidebar_content'));
 $sbpos = tpl_getConf('sidebar');
 
 // set notoc option and toolbar regarding the sitebar setup
 switch($sbpos) {
   case 'both':
-    $notoc = (in_array('toc',$sbl) || in_array('toc',$sbr)) ? true : false;
-    $toolb = (in_array('toolbox',$sbl) || in_array('toolbox',$sbr)) ? true : false;
-    break;
-  case 'left':
-    $notoc = (in_array('toc',$sbl)) ? true : false;
-    $toolb = (in_array('toolbox',$sbl)) ? true : false;
-    break;
-  case 'right':
-    $notoc = (in_array('toc',$sbr)) ? true : false;
-    $toolb = (in_array('toolbox',$sbr)) ? true : false;
+    $notoc = (in_array('toc','main')) ? true : false;
+    $toolb = (in_array('toolbox','main')) ? true : false;
     break;
   case 'none':
     $notoc = false;
     $toolb = false;
     break;
-}
-
-/**
- * Prints the sidebars
- * 
- * @author Michael Klier <chi@chimeric.de>
- */
-function fmi_tpl_sidebar($pos,$pn) {
-
-    $sb_order   = ($pos == 'left') ? explode(',', tpl_getConf('left_sidebar_order'))   : explode(',', tpl_getConf('right_sidebar_order'));
-    $sb_content = ($pos == 'left') ? explode(',', tpl_getConf('left_sidebar_content')) : explode(',', tpl_getConf('right_sidebar_content'));
-
-    // process contents by given order
-    foreach($sb_order as $sb) {
-        if(in_array($sb,$sb_content)) {
-            $key = array_search($sb,$sb_content);
-            unset($sb_content[$key]);
-            fmi_tpl_sidebar_dispatch($sb,$pos,$pn);
-        }
-    }
-
-    // check for left content not specified by order
-    if(is_array($sb_content) && !empty($sb_content) > 0) {
-        foreach($sb_content as $sb) {
-            fmi_tpl_sidebar_dispatch($sb,$pos,$pn);
-        }
-    }
 }
 
 /**
@@ -105,61 +68,6 @@ function fmi_tpl_sidebar_dispatch($sb,$pos,$pn) {
                 print '<div class="main_sidebar sidebar_box">' . DOKU_LF;
                 print str_replace('LINK', $link, $out);
                 print '</div>' . DOKU_LF;
-            }
-            break;
-
-        case 'namespace':
-            if(tpl_getConf('closedwiki') && !isset($_SERVER['REMOTE_USER'])) return;
-            $user_ns  = tpl_getConf('user_sidebar_namespace');
-            $group_ns = tpl_getConf('group_sidebar_namespace');
-            if(!preg_match("/^".$user_ns.":.*?$|^".$group_ns.":.*?$/", $svID)) { // skip group/user sidebars and current ID
-                $ns_sb = _getNsSb($svID);
-                if($ns_sb && auth_quickaclcheck($ns_sb) >= AUTH_READ) {
-                    print '<div class="namespace_sidebar sidebar_box">' . DOKU_LF;
-                    print p_sidebar_xhtml($ns_sb,$pos) . DOKU_LF;
-                    print '</div>' . DOKU_LF;
-                }
-            }
-            break;
-
-        case 'user':
-            if(tpl_getConf('closedwiki') && !isset($_SERVER['REMOTE_USER'])) return;
-            $user_ns = tpl_getConf('user_sidebar_namespace');
-            if(isset($INFO['userinfo']['name'])) {
-                $user = $_SERVER['REMOTE_USER'];
-                $user_sb = $user_ns . ':' . $user . ':' . $pname;
-                if(@page_exists($user_sb)) {
-                    $subst = array('pattern' => array('/@USER@/'), 'replace' => array($user));
-                    print '<div class="user_sidebar sidebar_box">' . DOKU_LF;
-                    print p_sidebar_xhtml($user_sb,$pos,$subst) . DOKU_LF;
-                    print '</div>';
-                }
-                // check for namespace sidebars in user namespace too
-                if(preg_match('/'.$user_ns.':'.$user.':.*/', $svID)) {
-                    $ns_sb = _getNsSb($svID); 
-                    if($ns_sb && $ns_sb != $user_sb && auth_quickaclcheck($ns_sb) >= AUTH_READ) {
-                        print '<div class="namespace_sidebar sidebar_box">' . DOKU_LF;
-                        print p_sidebar_xhtml($ns_sb,$pos) . DOKU_LF;
-                        print '</div>' . DOKU_LF;
-                    }
-                }
-
-            }
-            break;
-
-        case 'group':
-            if(tpl_getConf('closedwiki') && !isset($_SERVER['REMOTE_USER'])) return;
-            $group_ns = tpl_getConf('group_sidebar_namespace');
-            if(isset($INFO['userinfo']['name'], $INFO['userinfo']['grps'])) {
-                foreach($INFO['userinfo']['grps'] as $grp) {
-                    $group_sb = $group_ns.':'.$grp.':'.$pname;
-                    if(@page_exists($group_sb) && auth_quickaclcheck(cleanID($group_sb)) >= AUTH_READ) {
-                        $subst = array('pattern' => array('/@GROUP@/'), 'replace' => array($grp));
-                        print '<div class="group_sidebar sidebar_box">' . DOKU_LF;
-                        print p_sidebar_xhtml($group_sb,$pos,$subst) . DOKU_LF;
-                        print '</div>' . DOKU_LF;
-                    }
-                }
             }
             break;
 
@@ -397,7 +305,7 @@ function fmi_tpl_submenus($space) {
 			if ($files != '.' && $files != '..') {
 						$files = substr($files, 0, -4);
 						echo '<div class="submenu left_sidebar" id="submenu'.$files.'">';
-							fmi_tpl_sidebar("left", $space.":".$files);
+							fmi_tpl_sidebar_dispatch('main',"left", $space.":".$files);
 						echo '</div>';
 						fmi_tpl_makeSubmenuScript($space,$files);
 						fmi_tpl_makeCssRules($space,$files);

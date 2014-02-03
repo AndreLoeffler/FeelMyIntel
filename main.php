@@ -71,25 +71,14 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 
     <?php flush()?>
 
-    <?php if(tpl_getConf('sidebar') == 'left') { ?>
-      <?php if(!fmi_tpl_sidebar_hide()) { ?>
-      <div class="sidebar-container">
-        <div class="left_sidebar full-width">
-          <?php tpl_searchform() ?>
-          <?php fmi_tpl_sidebar('left') ?>
-        </div>
-      </div>
-      <?php } ?>
-
-    <?php } elseif(tpl_getConf('sidebar') == 'both') { ?>
+    <?php if(tpl_getConf('sidebar') == 'both') { ?>
       <?php if(!fmi_tpl_sidebar_hide()) { ?>
 	  <div class="sidebar-container">
         <div class="left_sidebar full-width">
           <div id ="submenu-container">
           	<?php fmi_tpl_submenus(tpl_getConf('submenu_name'));?>
 	      </div>
-          <?php if(tpl_getConf('search') == 'left') tpl_searchform() ?>
-	          <?php fmi_tpl_sidebar('left','sidebar') ?>
+          <?php fmi_tpl_sidebar_dispatch('main','left','sidebar') ?>
         </div>
 	      <div style="clear:both;" class="left-sidebar full-width">
         	<div class="main_sidebar sidebar_box">
@@ -98,32 +87,16 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           </div>
         <?php if(isset($INFO['userinfo'])) { ?>
 	        <div style="clear: both" class="left_sidebar full-width">
-	          <?php fmi_tpl_sidebar('left','internal:private') ?>
+	          <?php fmi_tpl_sidebar_dispatch('main','left','internal:private') ?>
 	        </div>
         <?php }?>
         <div class="left_sidebar full-width">
-            <?php fmi_tpl_sidebar('left','calendar') ?>
+            <?php fmi_tpl_sidebar_dispatch('main','left','calendar') ?>
         </div>
 	  </div> <!-- sidebar-container -->
         
 		<div class="center_page">
-		<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
-        <?php
-          $translation = &plugin_load('helper','translation');
-          if ($translation) echo $translation->showTranslations();
-        ?>
-		<?php
-		}
-		?>
           <?php ($notoc) ? tpl_content(false) : tpl_content() ?>
-		<?php if (tpl_getConf('translation_bar') == 'bottom' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
-          <?php
-          $translation = &plugin_load('helper','translation');
-          if ($translation) echo $translation->showTranslations();
-        ?>
-		<?php
-		}
-		?>
         </div>
         
       <?php } else { ?>
@@ -133,27 +106,6 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
         	</div>
         </div> 
       <?php }?>
-
-	<?php } elseif(tpl_getConf('sidebar') == 'none') { ?>
-	<?php if (tpl_getConf('translation_bar') == 'top' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
-	<?php
-          $translation = &plugin_load('helper','translation');
-          if ($translation) echo $translation->showTranslations();
-        ?>
-		<?php
-		}
-		?>
-      <div class="page">
-        <?php tpl_content() ?>
-		<?php if (tpl_getConf('translation_bar') == 'bottom' || tpl_getConf('translation_bar') == 'top and bottom') { ?>
-		<?php
-          $translation = &plugin_load('helper','translation');
-          if ($translation) echo $translation->showTranslations();
-        ?>
-		<?php
-		}
-		?>
-      </div>
     <?php } ?>
 
     <div class="clearer"></div>
