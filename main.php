@@ -63,7 +63,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     $logo = tpl_getMediaFile(array(':wiki:'.tpl_getConf('logoname'), ':'.tpl_getConf('logoname'), 'images/'.tpl_getConf('logoname')), true);
 	?>
     <div class="stylehead">
-      <div class="headerinc" style="height:<?php tpl_getConf('logoheigth') ?>;">
+      <div class="headerinc">
       <a href="<?php echo $url?>?id=start" accesskey="h" title="[[START]]" name="dokuwiki__top"><img src="<?php echo $logo?>" width="<?php echo tpl_getConf('logowidth') ?>" height="<?php echo tpl_getConf('logoheigth') ?>" border="0" /></a>
 	  <?php if ($conf['tagline']): ?>
 		<div class="tagline">

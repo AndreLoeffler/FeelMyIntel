@@ -16,11 +16,6 @@ body {
 }
 
 /* the document */
-div.dokuwiki div.page {
-  margin: 4px 2em 0 1em;
-  text-align: justify;
-}
-
 div.dokuwiki table {
   font-size: 100%;
 }

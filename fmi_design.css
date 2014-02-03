@@ -46,6 +46,7 @@ div.dokuwiki div.right_sidebar {
 div.dokuwiki div.page {
   text-align: justify;
   padding-top: 0;
+  margin: 4px 2em 0 0;
 }
 
 div.dokuwiki div.img_big_cont {
