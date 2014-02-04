@@ -82,7 +82,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
         </div>
 	      <div style="clear:both;" class="left-sidebar full-width">
         	<div class="main_sidebar sidebar_box">
-	        	<?php tpl_searchform() ?>
+	        	<?php tpl_searchform(); ?>
         	</div>
           </div>
         <?php if(isset($INFO['userinfo'])) { ?>

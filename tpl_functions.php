@@ -338,8 +338,8 @@ function fmi_tpl_makeCssRules($space,$files){
 	$height = -1;
 	if ($f) {
 		while(false !== ($buffer = fgets($f, 4096))) {
-			$height++;
 			if (strpos($buffer = strtolower(str_replace($out, '', $buffer)), '|')) @list($buffer, $b) = explode('|', $buffer, 2);
+			$height += ceil(strlen($buffer)/40);
 			if ($buffer == $files) break;
 			}
 	}

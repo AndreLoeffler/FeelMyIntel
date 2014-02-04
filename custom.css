@@ -134,3 +134,7 @@ div.bar-left.footer {
 div.footerinc * {
 	float: left;
 }
+
+div.dokuwiki li.level1 {
+	line-height: 27px;
+}

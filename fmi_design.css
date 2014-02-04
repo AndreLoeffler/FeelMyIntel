@@ -194,7 +194,6 @@ div.dokuwiki div.sidebar_box {
 div.dokuwiki div.left_sidebar a.wikilink1, div.dokuwiki div.left_sidebar a.wikilink2, div.dokuwiki div.left_sidebar a.mail,
 div.dokuwiki div.right_sidebar a.wikilink1, div.dokuwiki div.right_sidebar a.wikilink2, div.dokuwiki div.right_sidebar a.mail {
   display: inline-block;
-  padding: 4px 0 4px;
   font-weight: bold;
   width: 100%;
 }
