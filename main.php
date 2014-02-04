@@ -96,6 +96,16 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 	  </div> <!-- sidebar-container -->
         
 		<div class="center_page">
+		  <?php if(isset($INFO['userinfo'])) { ?>
+		  <span class="userlink" style="display: <?php echo (strpos($ID,"user:") !== false ? 'block' : 'none'); ?>;">
+		    <?php
+		    	$match = str_replace('user:','',$ID); 
+		    	
+		    	echo '<a href="http://rivendell.informatik.uni-wuerzburg.de/lam/templates/account/edit.php?type=user&DN=\'uid%3D'.$match.'%2Cou%3DPeople%2Cdc%3Dfmi-wuerzburg%2Cdc%3Dde">'.
+				            	 "Profil von ".$match."</a>";
+		    ?>
+		  </span>
+		  <?php } ?>
           <?php ($notoc) ? tpl_content(false) : tpl_content() ?>
         </div>
         
