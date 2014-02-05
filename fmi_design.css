@@ -33,7 +33,6 @@ div#wrapper.media {
 div.dokuwiki div.left_sidebar {
   float: left;
   padding: 0.2em 10px 0 0;
-  border-right: 0px solid  __border__;
 }
 
 div.dokuwiki div.right_sidebar {
@@ -186,7 +185,6 @@ div.dokuwiki div.sidebar_box {
   border: __boxborder__;
   margin-bottom: __margin__;
   padding: 0.3em;
-  overflow: hidden;
   background-color: white;
 }
 

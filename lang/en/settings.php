@@ -10,7 +10,6 @@ $lang['pagename']                       = "Pagename to use for sidebars";
 $lang['main_sidebar_always']			= "Show main sidebar in every namespace";
 $lang['wiki_actionlinks']               = "Actionlink style";
 $lang['left_sidebar_content_other']     = "Other sidebars (comma separated)";
-$lang['closedwiki']                     = "Closed Wiki (Navigation shows only the login link if not logged in)"; 
 $lang['hideactions']                    = "Hide all wiki actions to non logged in users";
 $lang['logoname']                       = "Name of the Headerlogo";
 $lang['logowidth']                      = "Width of the Headerlogo (don't forget the unit like px)";

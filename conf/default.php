@@ -11,7 +11,6 @@ $conf['sidebar']                    = 'both';                       // enable/di
 $conf['pagename']                   = 'sidebar';                    // the pagename for sidebars inside namespaces
 $conf['main_sidebar_always']		    = 1;														// show main sidebar on all namespaces
 $conf['wiki_actionlinks']           = 'links';                      // use buttons instead of links
-$conf['closedwiki']                 = 0;                            // don't show sidebars for logged out users at all
 $conf['hideactions']                = 0;                            // hide all wiki related actions for non logged in users
 $conf['logoname']                   = 'headerlogo.png';             // name of the headerlogo
 $conf['logowidth']                  = '128px';                      // width of the headerlogo

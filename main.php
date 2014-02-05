@@ -48,9 +48,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
   <div class="dokuwiki">
 	
     <?php
-    	if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) { 
     		html_msgarea();
-    	}
     ?>
 	<?php
 	// get logo either out of the template images folder or data/media folder
@@ -75,10 +73,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
       <?php if(!fmi_tpl_sidebar_hide()) { ?>
 	  <div class="sidebar-container">
         <div class="left_sidebar full-width">
-          <div id ="submenu-container">
-          	<?php fmi_tpl_submenus(tpl_getConf('submenu_name'));?>
-	      </div>
-          <?php fmi_tpl_sidebar_dispatch('main','left','sidebar') ?>
+          <?php echo fmi_tpl_sidebar_dispatch('main','left','sidebar',true); ?>
         </div>
 	      <div style="clear:both;" class="left-sidebar full-width">
         	<div class="main_sidebar sidebar_box">
@@ -87,15 +82,16 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           </div>
         <?php if(isset($INFO['userinfo'])) { ?>
 	        <div style="clear: both" class="left_sidebar full-width">
-	          <?php fmi_tpl_sidebar_dispatch('main','left','internal:private') ?>
+	          <?php echo fmi_tpl_sidebar_dispatch('main','left','internal:private'); ?>
 	        </div>
         <?php }?>
         <div class="left_sidebar full-width">
-            <?php fmi_tpl_sidebar_dispatch('main','left','calendar') ?>
+            <?php echo fmi_tpl_sidebar_dispatch('main','left','calendar'); ?>
         </div>
 	  </div> <!-- sidebar-container -->
         
 		<div class="center_page">
+
 		  <?php if(isset($INFO['userinfo'])) { ?>
 		  <span class="userlink" style="display: <?php echo (strpos($ID,"user:") !== false ? 'block' : 'none'); ?>;">
 		    <?php
@@ -124,7 +120,6 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 
     <?php if(!$toolb) { ?>
     <?php if(!tpl_getConf('hideactions') || tpl_getConf('hideactions') && isset($_SERVER['REMOTE_USER'])) { ?>
-    <?php if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) { ?>
     
     <div class="bar admin-bar" id="bar__bottom">
     	<div class="bar-left">
@@ -183,22 +178,16 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           <?php
 			switch(tpl_getConf('wiki_actionlinks')) {
               case('buttons'):
-                if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
                   tpl_button('admin');
                   tpl_button('revert');
                   tpl_button('profile');
                   if(tpl_getConf('sidebar') == 'none') tpl_searchform();
-                } else {
-                }
                 break;
               case('links'):
-                if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
                   tpl_actionlink('admin');
                   tpl_actionlink('revert');
                   tpl_actionlink('profile');
                   if(tpl_getConf('sidebar') == 'none') tpl_searchform();
-                } else {
-                }
                 break;
             }
           ?>
@@ -208,18 +197,12 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           <?php
 			switch(tpl_getConf('wiki_actionlinks')) {
               case('buttons'):
-                if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
                   tpl_button('recent');
                   tpl_button('index');
-                } else {
-                }
                 break;
               case('links'):
-                if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
                   tpl_actionlink('recent');
                   tpl_actionlink('index');
-                } else {
-                }
                 break;
             }
           ?>
@@ -228,22 +211,12 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
           <?php
 			switch(tpl_getConf('wiki_actionlinks')) {
               case('buttons'):
-                if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
                   tpl_button('register');
                   tpl_button('login');
-                } else {
-                  tpl_button('register');
-                  tpl_button('login');
-                }
                 break;
               case('links'):
-                if(!tpl_getConf('closedwiki') || (tpl_getConf('closedwiki') && isset($_SERVER['REMOTE_USER']))) {
                   tpl_actionlink('register');
                   tpl_actionlink('login');
-                } else {
-                  tpl_actionlink('register');
-                  tpl_actionlink('login');
-                }
                 break;
             }
           ?>
@@ -271,8 +244,12 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <div class="clearer"></div>
     <?php } ?>
     <?php } ?>
-    <?php } ?>
-
+    <div id="subcancel" style=""></div>
+    <script type="text/javascript">
+    jQuery("#subcancel").click(function() {
+      jQuery("#subcancel").toggle();
+      jQuery(".submenu").hide();});
+    </script>
 
   </div><!-- close DokuWiki -->
 </div> 

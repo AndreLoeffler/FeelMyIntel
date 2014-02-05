@@ -11,7 +11,6 @@ $meta['sidebar']                  = array('multichoice', '_choices' => array('bo
 $meta['pagename']                 = array('string', '_pattern' => '#[a-z0-9]*#');
 $meta['main_sidebar_always']	    = array('onoff');
 $meta['wiki_actionlinks']         = array('multichoice', '_choices' => array('links', 'buttons'));
-$meta['closedwiki']               = array('onoff');
 $meta['hideactions']              = array('onoff');
 $meta['logoname']                 = array('string', '_pattern' => '#[a-z0-9]*#');
 $meta['logowidth']                = array('string', '_pattern' => '#[a-z0-9]*#');

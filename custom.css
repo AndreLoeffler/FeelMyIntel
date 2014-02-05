@@ -87,10 +87,10 @@ div.dokuwiki .bar {
 	margin-top: __margin__;
 }
 
-#submenu-container {
+.submenu-container {
 	position: relative;
 }
-#submenu-container * .sidebar_box {
+.submenu-container * .sidebar_box {
 	position: relative;
 }
 
