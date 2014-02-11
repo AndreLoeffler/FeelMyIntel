@@ -32,38 +32,33 @@ switch($sbpos) {
  * @author Michael Klier <chi@chimeric.de>
  */
 function fmi_tpl_sidebar_dispatch($sb,$pos,$pn,$sub=false) {
-    global $lang;
     global $conf;
     global $ID;
     global $REV;
-    global $INFO;
     global $TOC;
 
     $svID  = $ID;   // save current ID
     $svREV = $REV;  // save current REV 
     $svTOC = $TOC;  // save current TOC
 
-    //$pname = tpl_getConf('pagename');
-    $pname = $pn;
 	$ret = "";
     
     switch($sb) {
         case 'main':
-            $main_sb = $pname;
-            if(@page_exists($main_sb) && auth_quickaclcheck($main_sb) >= AUTH_READ) {
+            if(@page_exists($pn) && auth_quickaclcheck($pn) >= AUTH_READ) {
                 $always = tpl_getConf('main_sidebar_always');
                 if($always or (!$always && !getNS($ID))) {
                     $ret .= '<div class="main_sidebar sidebar_box">' . DOKU_LF;
-                    $ret .= p_sidebar_xhtml($main_sb,$pos,$sub) . DOKU_LF;
+                    $ret .= p_sidebar_xhtml($pn,$pos,$sub) . DOKU_LF;
                     $ret .= '</div>' . DOKU_LF;
                 }
-            } elseif(!@page_exists($main_sb) && auth_quickaclcheck($main_sb) >= AUTH_CREATE) {
+            } elseif(!@page_exists($pn) && auth_quickaclcheck($pn) >= AUTH_CREATE) {
                 if(@file_exists(DOKU_TPLINC.'lang/'. $conf['lang'].'/nosidebar.txt')) {
                     $out = p_render('xhtml', p_get_instructions(io_readFile(DOKU_TPLINC.'lang/'.$conf['lang'].'/nosidebar.txt')), $info);
                 } else {
                     $out = p_render('xhtml', p_get_instructions(io_readFile(DOKU_TPLINC.'lang/en/nosidebar.txt')), $info);
                 }
-                $link = '<a href="' . wl($pname) . '" class="wikilink2">' . $pname . '</a>' . DOKU_LF;
+                $link = '<a href="' . wl($pn) . '" class="wikilink2">' . $pn . '</a>' . DOKU_LF;
                 $ret .= '<div class="main_sidebar sidebar_box">' . DOKU_LF;
                 $ret .= str_replace('LINK', $link, $out);
                 $ret .= '</div>' . DOKU_LF;
@@ -100,46 +95,34 @@ function p_sidebar_xhtml($sb,$pos,$sub=false) {
     $data = p_wiki_xhtml($sb,'',false);
     // strip TOC and replace headline ids for XHTML compliance
     $data = preg_replace('/<div class="toc">.*?(<\/div>\n<\/div>)/s', '', $data);
-	//if($sub) if(file_put_contents('data/pages/penis.txt',$data)) echo "penis";
     if($sub) $data = fmi_DOM_include_submenus($data);
     if(auth_quickaclcheck($sb) >= AUTH_EDIT)
         $data .= '<div class="secedit">'.html_btn('secedit',$sb,'',array('do'=>'edit','rev'=>'','post')).'</div>';
     $data = preg_replace('/(<h.*?><a.*?name=")(.*?)(".*?id=")(.*?)(">.*?<\/a><\/h.*?>)/','\1sb_'.$pos.'_\2\3sb_'.$pos.'_\4\5', $data);
 
-/*
-    if($sub) {
-	    $arr = array_reverse();
-	    foreach ($arr as $key => $rep) {
-	    	$data = preg_replace('/'.$key.'<\/a><\/div>/',$key.'</a>'.$rep.'</div>',$data);
-	    }
-    }
-    unset($rep);
- */
     return ($data);
 }
 
 function fmi_DOM_include_submenus($data){
-	$i = 0;
-	$submenus = fmi_tpl_submenus(tpl_getConf('submenu_name'));
-	//print_r($submenus);
-	
 	$dom = DOMDocument::loadHTML($data);
 	$anchors = $dom->getElementsByTagName('a');
 	foreach($anchors as $d){
-		$nd = $dom->createTextNode($submenus[$i]['cont']);
-		$css = $dom->createTextNode(fmi_tpl_makeCssRules($submenus[$i]['files'],$d->nodeValue));
-		$js = $dom->createTextNode(fmi_tpl_makeSubmenuScript($submenus[$i]['space'],$submenus[$i]['files']));
-		$i++;
-		$d->appendChild($nd);
-		$d->appendChild($css);
-		$d->appendChild($js);
+		$st =  $d->getAttribute('href');
+		if (strpos($st,':')) {
+			@list($url,$name) = explode(':',$st,2);
+			$nd = $dom->createTextNode(fmi_tpl_submenu_single($name));
+			$css = $dom->createTextNode(fmi_tpl_makeCssRules($name,$d->nodeValue));
+			$js = $dom->createTextNode(fmi_tpl_makeSubmenuScript($name));
+			$d->appendChild($nd);
+			$d->appendChild($css);
+			$d->appendChild($js);
+		}
 	}
 	$strap = array('&lt;', '&gt;', '<html>', '</html>', '<body>', '</body>');
 	$replace = array('<','>');
 	$data = preg_replace('/^<!DOCTYPE.+?>/', '', str_replace($strap, $replace, $dom->saveHTML()));
 	return $data;
 }
-
 
 /**
  * Renders the Index
@@ -176,35 +159,17 @@ function p_index_xhtml($ns,$pos) {
   print '</div>' . DOKU_LF;
 }
 
-function fmi_tpl_submenus($space) {
-	$i = 0;
-	$ret = array();
-	$tar = 'data/pages/'.$space;
-	if (is_dir($tar)) {
-		$dir = opendir($tar);
-		while (false !== ($files = readdir($dir))) { 
-			if ($files != '.' && $files != '..') {
-				$ret[$i]['cont'] = fmi_tpl_submenu_single($space,$files = substr($files, 0, -4));
-				$ret[$i]['files'] = $files;
-				$ret[$i]['space'] = $space;
-				$i++;
-			}
-		}
-	}
-	return $ret;
-}
-
-function fmi_tpl_submenu_single($space,$files) {
+function fmi_tpl_submenu_single($files) {
 	$cont = '<div class="submenu-container"><div class="submenu left_sidebar" id="submenu'.$files.'">';
-	$cont .= fmi_tpl_sidebar_dispatch('main',"left", $space.":".$files).'</div>';
+	$cont .= fmi_tpl_sidebar_dispatch('main',"left", tpl_getConf('submenu_name').":".$files).'</div>';
 	$cont .= '</div>';
 	return $cont;
 }
 
-function fmi_tpl_makeSubmenuScript($space,$files){
+function fmi_tpl_makeSubmenuScript($files){
 	$ret  ='<script type="text/javascript">';
 	$ret .='	jQuery(document).ready(function() {';
-	$ret .='		jQuery("a[title=\''.$space.':'.$files.'\']").click(function(){
+	$ret .='		jQuery("a[title=\''.tpl_getConf('submenu_name').':'.$files.'\']").click(function(){
 						jQuery("#subcancel").height(jQuery(document).height()).toggle();
 						jQuery("#submenu'.$files.'").toggle();
 						return false;
