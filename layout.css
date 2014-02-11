@@ -41,11 +41,8 @@ div.dokuwiki .logo a {
 
 /* ---------------  top and bottom bar ---------------- */
 div.dokuwiki .bar {
-  border-top: 1px solid __border__;
-  border-bottom: 1px solid __border__;
-  background: __background_alt__;
   padding: 0.1em 0.15em;
-  clear: both;
+  margin-top: __margin__;
 }
 
 div.dokuwiki .bar-left {
@@ -56,10 +53,6 @@ div.dokuwiki .bar-left {
 div.dokuwiki .bar-right {
   float: right;
   text-align: right;
-}
-
-div.dokuwiki #bar__bottom {
-  margin-bottom: 3px;
 }
 
 /* ------------- File Metadata ----------------------- */
@@ -79,5 +72,4 @@ div.dokuwiki div.meta div.user {
 div.dokuwiki div.meta div.doc {
   text-align: right;
   float: right;
-  clear: both;
 }

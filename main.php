@@ -120,125 +120,30 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 
     <?php if(!$toolb) { ?>
     <?php if(!tpl_getConf('hideactions') || tpl_getConf('hideactions') && isset($_SERVER['REMOTE_USER'])) { ?>
-    
     <div class="bar admin-bar" id="bar__bottom">
-    	<div class="bar-left">
-	      <div class="left-media">
-	        <?php 
-	          switch(tpl_getConf('wiki_actionlinks')) {
-	            case('buttons'):
-	            	tpl_button('edit');
-	                tpl_button('history');
-					if ((tpl_getConf('show_backlink') == 'bottom') || (tpl_getConf('show_backlink') == 'both')) {
-					tpl_button('backlink');
-					}
-	              	break;
-	            case('links'):
-	            	tpl_actionlink('edit');
-	                tpl_actionlink('history');
-					if ((tpl_getConf('show_backlink') == 'bottom') || (tpl_getConf('show_backlink') == 'both')) {
-					tpl_actionlink('backlink');
-					}
-	              	break;
-	          }
-	        ?>
-	      </div>
-
-	      <div class="left-media">
-	        <?php 
-	          switch(tpl_getConf('wiki_actionlinks')) {
-	            case('buttons'):
-					tpl_button('back');
-	                tpl_button('media');
-	                tpl_button('top');
-	              	break;
-	            case('links'):
-					tpl_actionlink('back');
-	                tpl_actionlink('media');
-	                tpl_actionlink('top');
-	              	break;
-	          }
-	        ?>
-	      </div>
-	      <div class="left-media">
-	        <?php 
-	          switch(tpl_getConf('wiki_actionlinks')) {
-	            case('buttons'):
-	                tpl_button('subscription');
-	              	break;
-	            case('links'):
-	                tpl_actionlink('subscription');
-	             	break;
-	          }
-	        ?>
-	      </div>
-    	</div>
-	      <div class="bar-right">
-    		<div class="right-log">
-          <?php
-			switch(tpl_getConf('wiki_actionlinks')) {
-              case('buttons'):
-                  tpl_button('admin');
-                  tpl_button('revert');
-                  tpl_button('profile');
-                  if(tpl_getConf('sidebar') == 'none') tpl_searchform();
-                break;
-              case('links'):
-                  tpl_actionlink('admin');
-                  tpl_actionlink('revert');
-                  tpl_actionlink('profile');
-                  if(tpl_getConf('sidebar') == 'none') tpl_searchform();
-                break;
-            }
-          ?>
-    		
-    		</div>
-    		<div class="right-log">
-          <?php
-			switch(tpl_getConf('wiki_actionlinks')) {
-              case('buttons'):
-                  tpl_button('recent');
-                  tpl_button('index');
-                break;
-              case('links'):
-                  tpl_actionlink('recent');
-                  tpl_actionlink('index');
-                break;
-            }
-          ?>
-    		</div>
-    		<div class="right-log">
-          <?php
-			switch(tpl_getConf('wiki_actionlinks')) {
-              case('buttons'):
-                  tpl_button('register');
-                  tpl_button('login');
-                break;
-              case('links'):
-                  tpl_actionlink('register');
-                  tpl_actionlink('login');
-                break;
-            }
-          ?>
-    		</div>
-        </div>
-        <div class="bar-left footer">
-		    <?php /*old includehook*/ @include(dirname(__FILE__).'/footer.html')?>
-        
-        </div>
-        <div class="bar-right">
-            <div class="right-log">
-    		  <div class="stylefoot">
-		        <div class="meta">
-		          <div class="user">
-		          <?php tpl_userinfo()?>
-		          </div>
-		          <div class="doc">
-		          <?php tpl_pageinfo()?>
-		          </div>
-		        </div>
-		      </div>
-    		</div>
+        <div class="footer center">
+        	<div class="footer column">
+        		<div class="arrow left"></div>
+        	</div>
+        	<div class="footer column">
+	    		<div class="footer row top">
+	          		<div class="user">
+	          			<?php 
+	          				if(isset($_SERVER['REMOTE_USER'])) {
+	          					fmi_tpl_userinfo();
+	          					echo " - ";
+	          				}
+	          				fmi_tpl_pageinfo();
+	          			?>
+	          		</div>
+	    		</div>    	
+	        	<div class="footer row">
+				    <?php /*old includehook*/ @include(dirname(__FILE__).'/footer.html')?>
+	        	</div>
+        	</div>
+        	<div class="footer column">
+        		<div class="arrow right"></div>
+        	</div>
         </div>
     </div>
     <div class="clearer"></div>

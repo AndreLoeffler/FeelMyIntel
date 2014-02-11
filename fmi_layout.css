@@ -30,14 +30,7 @@ div.dokuwiki .logo a {
   color: __logo_color__ !important;
 }
 
-div.dokuwiki .bar {
-  padding: 2px;
-  float: left;
-  width: 100%;
-}
-
-div.dokuwiki #bar__top,
-div.dokuwiki #bar__bottom { 
+div.dokuwiki #bar__top { 
   background: none;
 }
 

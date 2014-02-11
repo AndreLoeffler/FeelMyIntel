@@ -202,3 +202,63 @@ function fmi_tpl_sidebar_hide() {
         return false;
     }
 }
+
+/**
+ * Print info if the user is logged in
+ * and show full name in that case
+ *
+ * Could be enhanced with a profile link in future?
+ *
+ * @author Andreas Gohr <andi@splitbrain.org>
+ * @return bool
+ */
+function fmi_tpl_userinfo() {
+	global $lang;
+	global $INFO;
+	if(isset($_SERVER['REMOTE_USER'])) {
+		print '<bdi>'.hsc($INFO['userinfo']['name']).'</bdi> (<bdi>'.hsc($_SERVER['REMOTE_USER']).'</bdi>)';
+		return true;
+	}
+	return false;
+}
+
+function fmi_tpl_pageinfo($ret = false) {
+	global $conf;
+	global $lang;
+	global $INFO;
+	global $ID;
+
+	// return if we are not allowed to view the page
+	if(!auth_quickaclcheck($ID)) {
+		return false;
+	}
+
+	// prepare date and path
+	$date = dformat($INFO['lastmod']);
+
+	// print it
+	if($INFO['exists']) {
+		$out = $lang['lastmod'];
+		$out .= ': ';
+		$out .= $date;
+		if($INFO['editor']) {
+			$out .= ' '.$lang['by'].' ';
+			$out .= '<bdi>'.editorinfo($INFO['editor']).'</bdi>';
+		} else {
+			$out .= ' ('.$lang['external_edit'].')';
+		}
+		if($INFO['locked']) {
+			$out .= ' · ';
+			$out .= $lang['lockedby'];
+			$out .= ': ';
+			$out .= '<bdi>'.editorinfo($INFO['locked']).'</bdi>';
+		}
+		if($ret) {
+			return $out;
+		} else {
+			echo $out;
+			return true;
+		}
+	}
+	return false;
+}

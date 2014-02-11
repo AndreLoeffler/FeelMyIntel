@@ -39,20 +39,6 @@
 	float: left;
 }
 
-div.dokuwiki .bar.admin-bar {
-	background-color: white;
-	padding-left: 0px;
-}
-
-div.dokuwiki .bar.admin-bar .bar-left {
-	border: __boxborder__;
-}
-
-div.dokuwiki .bar.admin-bar .bar-right {
-	border: __boxborder__;
-	margin-left: 10px;
-}
-
 div.dokuwiki div.left_sidebar.full-width { width: 100%; }
 
 .sidebar-container { 
@@ -82,11 +68,6 @@ div.dokuwiki .plugin_include_content h1 {
 	border-bottom: none;
 }
 
-div.dokuwiki .bar {
-	border: none;
-	margin-top: __margin__;
-}
-
 .submenu-container {
 	position: relative;
 }
@@ -109,10 +90,6 @@ div.dokuwiki .bar {
 	width: 336px;
 }
 
-.admin-bar div {
-	background-color: white;
-}
-
 .admin_page {
   	margin-top:3px;
  	text-align: justify;
@@ -128,13 +105,49 @@ div.dokuwiki .bar {
 	margin-bottom: 1em;
 }
 
-div.bar-left.footer {
-	max-width: 40%;
-}
-div.footerinc * {
-	float: left;
-}
 
 div.dokuwiki li.level1 {
 	line-height: 27px;
+}
+
+div.dokuwiki div.bar a.backlink {
+	clear: both;
+}
+
+div.dokuwiki * div.footer.center {
+	margin: 0 auto;
+	width: 654px;
+	height: 50px;
+	border: __boxborder__;
+	background-color: white;
+}
+div.dokuwiki * div.footer.row {
+	text-align: center;
+	clear: both;
+	padding: 0 4px;
+}
+
+div.dokuwiki * div.footer.row.top {
+	width: 600px;
+}
+
+div.dokuwiki * div.footer.column {
+	float: left;
+	background-color: white;
+}
+
+div.arrow.left {
+	background-position: 0px 0px;
+}
+
+div.arrow.right {
+	background-position: -15px 0px;
+}
+
+div.arrow {
+	margin: 0 4px;
+	height: 50px;
+	width: 15px;
+	background-image: url(images/arrows.png);
+	background-repeat: no-repeat;
 }

@@ -98,11 +98,6 @@ div.tagline {
   font-family:Courier New, Monospace;
 }
 
-div.dokuwiki .footerinc {
-  background-color: white;
-  margin: 0 4px;
-}
-
 div.dokuwiki .footerinc a img {
   padding-top: __footer_padding__;
   padding-bottom: __footer_padding__;
