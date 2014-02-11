@@ -8,7 +8,6 @@
 $lang['sidebar']                        = "Sidebar setup";
 $lang['pagename']                       = "Pagename to use for sidebars";
 $lang['main_sidebar_always']			= "Show main sidebar in every namespace";
-$lang['wiki_actionlinks']               = "Actionlink style";
 $lang['left_sidebar_content_other']     = "Other sidebars (comma separated)";
 $lang['hideactions']                    = "Hide all wiki actions to non logged in users";
 $lang['logoname']                       = "Name of the Headerlogo";

@@ -110,7 +110,8 @@ div.dokuwiki li.level1 {
 	line-height: 27px;
 }
 
-div.dokuwiki div.bar a.backlink {
+div.dokuwiki div.bar a.backlink,
+div.dokuwiki div.bar a.recent {
 	clear: both;
 }
 
@@ -134,20 +135,50 @@ div.dokuwiki * div.footer.row.top {
 div.dokuwiki * div.footer.column {
 	float: left;
 	background-color: white;
+	position: relative;
 }
 
-div.arrow.left {
-	background-position: 0px 0px;
+div.footer.center * div.hidden-box {
+	position: absolute;
+	top: 0px;
+	background-color: white;
+	border: __boxborder__;
+	display: none;
+	width: 350px;
 }
 
-div.arrow.right {
-	background-position: -15px 0px;
+div.arrow:hover + div.hidden-box {
+	display: block;
 }
 
-div.arrow {
+div.footer.center * div.hidden-box.left {
+	left: -370px;
+}
+
+div.footer.center * div.hidden-box.right {
+	right: -370px;
+}
+
+label.arrow {
 	margin: 0 4px;
 	height: 50px;
 	width: 15px;
 	background-image: url(images/arrows.png);
 	background-repeat: no-repeat;
+  	display: inline-block;
+  	cursor: pointer;
+}
+
+label.arrow.left { background-position: 0px 0px; }
+label.arrow.right { background-position: -15px 0px; }
+
+input.hidden-check[type=checkbox] {
+	display: none;
+}
+
+input.hidden-check[type=checkbox]:checked ~ div.hidden-box.left {
+   display: block;
+}
+input.hidden-check[type=checkbox]:checked ~ div.hidden-box.right {
+   display: block;
 }

@@ -123,7 +123,21 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
     <div class="bar admin-bar" id="bar__bottom">
         <div class="footer center">
         	<div class="footer column">
-        		<div class="arrow left"></div>
+        		<label class="arrow left" for="leftbox"></label>
+        		<input class="hidden-check" type="checkbox" id="leftbox">
+        		<div class="hidden-box left" style="<?php fmi_tpl_showhidden() ?>">
+        			<?php 
+		            	tpl_actionlink('edit');
+		                tpl_actionlink('history');
+						if ((tpl_getConf('show_backlink') == 'bottom') || (tpl_getConf('show_backlink') == 'both')) {
+							tpl_actionlink('backlink');
+						}
+						tpl_actionlink('back');
+						tpl_actionlink('media');
+						tpl_actionlink('top');
+						tpl_actionlink('subscription');
+			        ?>
+        		</div>
         	</div>
         	<div class="footer column">
 	    		<div class="footer row top">
@@ -142,7 +156,19 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 	        	</div>
         	</div>
         	<div class="footer column">
-        		<div class="arrow right"></div>
+        		<label class="arrow right" for="rightbox"></label>
+        		<input class="hidden-check" type="checkbox" id="rightbox">
+        		<div class="hidden-box right" style="<?php fmi_tpl_showhidden() ?>">
+        			<?php 
+	                  	tpl_actionlink('login');
+	        			tpl_actionlink('revert');
+	        			tpl_actionlink('profile');
+	        			tpl_actionlink('recent');
+	                  	tpl_actionlink('index');
+	                  	tpl_actionlink('register');
+	        			tpl_actionlink('admin');
+        			?>
+        		</div>
         	</div>
         </div>
     </div>

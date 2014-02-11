@@ -222,43 +222,30 @@ function fmi_tpl_userinfo() {
 	return false;
 }
 
-function fmi_tpl_pageinfo($ret = false) {
-	global $conf;
+function fmi_tpl_pageinfo() {
 	global $lang;
 	global $INFO;
 	global $ID;
 
 	// return if we are not allowed to view the page
-	if(!auth_quickaclcheck($ID)) {
-		return false;
-	}
+	if(!auth_quickaclcheck($ID)) return false; 
 
 	// prepare date and path
 	$date = dformat($INFO['lastmod']);
 
 	// print it
 	if($INFO['exists']) {
-		$out = $lang['lastmod'];
-		$out .= ': ';
-		$out .= $date;
-		if($INFO['editor']) {
-			$out .= ' '.$lang['by'].' ';
-			$out .= '<bdi>'.editorinfo($INFO['editor']).'</bdi>';
-		} else {
-			$out .= ' ('.$lang['external_edit'].')';
-		}
-		if($INFO['locked']) {
-			$out .= ' · ';
-			$out .= $lang['lockedby'];
-			$out .= ': ';
-			$out .= '<bdi>'.editorinfo($INFO['locked']).'</bdi>';
-		}
-		if($ret) {
-			return $out;
-		} else {
-			echo $out;
-			return true;
-		}
+		$out = $lang['lastmod'].': '.$date;
+		if($INFO['editor']) $out .= ' von <bdi>'.editorinfo($INFO['editor']).'</bdi>';
+		else $out .= ' ('.$lang['external_edit'].')';
+		if($INFO['locked']) $out .= ' · '.$lang['lockedby'].': <bdi>'.editorinfo($INFO['locked']).'</bdi>';
+		echo $out;
+		return true;
 	}
 	return false;
+}
+
+function fmi_tpl_showhidden() {
+	if(isset($_SERVER['REMOTE_USER'])) echo "display: block";
+	else echo "";
 }
