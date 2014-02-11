@@ -111,7 +111,8 @@ div.dokuwiki li.level1 {
 }
 
 div.dokuwiki div.bar a.backlink,
-div.dokuwiki div.bar a.recent {
+div.dokuwiki div.bar a.recent,
+div.dokuwiki div.bar a.admin {
 	clear: both;
 }
 
