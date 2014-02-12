@@ -108,7 +108,6 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 
     <?php flush()?>
 
-    <?php if(!$toolb) { ?>
     <?php if(!tpl_getConf('hideactions') || tpl_getConf('hideactions') && isset($_SERVER['REMOTE_USER'])) { ?>
     <div class="bar admin-bar" id="bar__bottom">
         <div class="footer center">
@@ -163,7 +162,6 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
         </div>
     </div>
     <div class="clearer"></div>
-    <?php } ?>
     <?php } ?>
     <div id="subcancel" style=""></div>
     <script type="text/javascript">

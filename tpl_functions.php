@@ -18,11 +18,9 @@ $sbpos = tpl_getConf('sidebar');
 switch($sbpos) {
   case 'both':
     $notoc = (in_array('toc','main')) ? true : false;
-    $toolb = (in_array('toolbox','main')) ? true : false;
     break;
   case 'none':
     $notoc = false;
-    $toolb = false;
     break;
 }
 

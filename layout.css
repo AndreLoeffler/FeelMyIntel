@@ -3,11 +3,17 @@
  *
  * @author Andreas Gohr <andi@splitbrain.org>
  * @author moraes <moraes@tipos.com.br>
+ * @author Michael Klier <chi@chimeric.de>
+ * @author Andre Löffler <github@andre-loeffler.net>
  */
 
 /* -------------- top row --------------- */
 div.dokuwiki .header {
   padding: 3px 0 0 2px;
+  height: __header_height__;
+  border: 1px solid __border__;
+  background-color: __header_background__;
+  margin-bottom: 0.2em;
 }
 
 div.dokuwiki .pagename {
@@ -21,7 +27,7 @@ div.dokuwiki .pagename {
 }
 
 div.dokuwiki .pagename a {
-  color: __extern__ !important;
+  color: __pagename_color__ !important;
   text-decoration: none !important;
 }
 
@@ -35,7 +41,7 @@ div.dokuwiki .logo {
 }
 
 div.dokuwiki .logo a {
-  color: __background_alt__ !important;
+  color: __logo_color__ !important;
   text-decoration: none !important;
   font-variant: small-caps;
   letter-spacing: 2pt;
@@ -75,4 +81,25 @@ div.dokuwiki div.meta div.user {
 div.dokuwiki div.meta div.doc {
   text-align: right;
   float: right;
+}
+
+div.dokuwiki #bar__top { 
+  background: none;
+}
+
+div.dokuwiki div.footerinc div.license {
+  display: inline;
+  padding: 0;
+  font-size: 100%;
+}
+
+div.dokuwiki div.footerinc div.license img {
+  float: none;
+  margin: 0;
+}
+div.dokuwiki .userlink {
+	border: __boxborder__;
+	padding: __margin__;
+	float: right;
+	background-color: white;
 }
