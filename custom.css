@@ -16,10 +16,8 @@
 	font-weight: bold;
 	text-align: center;
 }
-.webcam-container:hover .webcam-noscript {
-	display: block;
-}
 
+.webcam-container:hover .webcam-noscript { display: block; }
 
 .webcam-container .webcam {
 	height: 128px;
@@ -30,50 +28,24 @@
 	width: 400px;
 }
 
-.right-log {
-	clear: both;
-	float: right;
-}
-.left-media {
-	clear: both;
-	float: left;
+div.dokuwiki div.left_sidebar.full-width { width: 100%; }
+
+div.dokuwiki .plugin_include_content {
+	border: __boxborder__;
+	margin-bottom: __margin__;
+	background-color: white;
 }
 
-div.dokuwiki div.left_sidebar.full-width { width: 100%; }
+div.dokuwiki .plugin_include_content h1 { border-bottom: none; }
 
 .sidebar-container { 
 	width: 24%; 
 	float: left; 
 }
 
-.sidebar-container * ul {
-	margin-left: 0px;	
-}
-
-.sidebar-container * li {
-	list-style-type: none;
-}
-
-
-div.dokuwiki div.inclmeta { 
-	text-align: right;
-}
-
-.plugin_include_content {
-	border: __boxborder__;
-	margin-bottom: __margin__;
-	background-color: white;
-}
-div.dokuwiki .plugin_include_content h1 {
-	border-bottom: none;
-}
-
-.submenu-container {
-	position: relative;
-}
-.submenu-container * .sidebar_box {
-	position: relative;
-}
+.sidebar-container * ul { margin-left: 0px; }
+.sidebar-container * li { list-style-type: none; }
+.submenu-container { position: relative; }
 
 #subcancel {
 	position: fixed;
@@ -83,11 +55,12 @@ div.dokuwiki .plugin_include_content h1 {
 	width: 100%;
 	z-index: 900;
 }
+
 .submenu {
 	display: none;
 	position: absolute;
 	z-index: 901;
-	width: 336px;
+	width: 100%;
 }
 
 .admin_page {
@@ -101,14 +74,7 @@ div.dokuwiki .plugin_include_content h1 {
  	background-color: white;
 }
 
-.stylehead {
-	margin-bottom: 1em;
-}
-
-
-div.dokuwiki li.level1 {
-	line-height: 27px;
-}
+div.dokuwiki li.level1 { line-height: 27px; }
 
 div.dokuwiki div.bar a.backlink,
 div.dokuwiki div.bar a.recent,
@@ -123,15 +89,14 @@ div.dokuwiki * div.footer.center {
 	border: __boxborder__;
 	background-color: white;
 }
+
 div.dokuwiki * div.footer.row {
 	text-align: center;
 	clear: both;
 	padding: 0 4px;
 }
 
-div.dokuwiki * div.footer.row.top {
-	width: 600px;
-}
+div.dokuwiki * div.footer.row.top { width: 600px; }
 
 div.dokuwiki * div.footer.column {
 	float: left;
@@ -148,17 +113,10 @@ div.footer.center * div.hidden-box {
 	width: 350px;
 }
 
-div.arrow:hover + div.hidden-box {
-	display: block;
-}
+div.arrow:hover + div.hidden-box { display: block; }
 
-div.footer.center * div.hidden-box.left {
-	left: -370px;
-}
-
-div.footer.center * div.hidden-box.right {
-	right: -370px;
-}
+div.footer.center * div.hidden-box.left { left: -370px; }
+div.footer.center * div.hidden-box.right { right: -370px; }
 
 label.arrow {
 	margin: 0 4px;
@@ -173,13 +131,9 @@ label.arrow {
 label.arrow.left { background-position: 0px 0px; }
 label.arrow.right { background-position: -15px 0px; }
 
-input.hidden-check[type=checkbox] {
-	display: none;
-}
+input.hidden-check[type=checkbox] { display: none; }
 
-input.hidden-check[type=checkbox]:checked ~ div.hidden-box.left {
-   display: block;
-}
-input.hidden-check[type=checkbox]:checked ~ div.hidden-box.right {
-   display: block;
+input.hidden-check[type=checkbox]:checked ~ div.hidden-box.left, 
+input.hidden-check[type=checkbox]:checked ~ div.hidden-box.right { 
+	display: block; 
 }

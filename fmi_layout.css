@@ -11,17 +11,6 @@ div.dokuwiki .header {
   margin-bottom: 0.2em;
 }
 
-div.dokuwiki .pagename {
-  margin: 0.2em;
-  font-size: 130%;
-  color: __lightgray__;
-}
-
-div.dokuwiki .logo {
-  margin: 0.2em;
-  font-size: 130%;
-}
-
 div.dokuwiki .pagename a {
   color: __pagename_color__ !important;
 }
@@ -32,10 +21,6 @@ div.dokuwiki .logo a {
 
 div.dokuwiki #bar__top { 
   background: none;
-}
-
-div.dokuwiki div.meta {
-  padding: 0 0.5em 0 0.5em;
 }
 
 div.dokuwiki div.footerinc div.license {

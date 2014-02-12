@@ -3,7 +3,6 @@
  * @author Michael Klier <chi@chimeric.de>
  */
 
-div.dokuwiki div.left_sidebar,
-div.dokuwiki div.right_sidebar {
+div.dokuwiki div.left_sidebar {
   display:none;
 }

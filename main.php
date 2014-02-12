@@ -19,7 +19,6 @@ if (!defined('DOKU_INC')) die();
 global $ACT;
 // include custom fmi template functions
 require_once(dirname(__FILE__).'/tpl_functions.php');
-
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
@@ -39,34 +38,26 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
   <link rel="shortcut icon" href="<?php echo $favicon;?>" />
 
   <?php /*old includehook*/ @include(dirname(__FILE__).'/meta.html')?>
-
-  
 </head>
+
 <body>
 <?php /*old includehook*/ @include(dirname(__FILE__).'/topheader.html')?>
 <div id="wrapper" class='<?php echo $ACT ?>'>
   <div class="dokuwiki">
 	
-    <?php
-    		html_msgarea();
-    ?>
+    <?php html_msgarea() ?>
 	<?php
 	// get logo either out of the template images folder or data/media folder
     $logo = tpl_getMediaFile(array(':wiki:'.tpl_getConf('logoname'), ':'.tpl_getConf('logoname'), 'images/'.tpl_getConf('logoname')), true);
 	?>
-    <div class="stylehead">
-      <div class="headerinc">
+    <div class="headerinc">
       <a href="<?php echo $url?>?id=start" accesskey="h" title="[[START]]" name="dokuwiki__top"><img src="<?php echo $logo?>" width="<?php echo tpl_getConf('logowidth') ?>" height="<?php echo tpl_getConf('logoheigth') ?>" border="0" /></a>
-	  	<div class="webcam-container">
-			<?php fmi_tpl_webcam(tpl_getConf('webcam_path'),tpl_getConf('webcam_time')); ?>
-	  	</div>
-      </div>
-    
-      <?php /*old includehook*/ @include(dirname(__FILE__).'/header.html')?>
-      </div>
-
+	  <div class="webcam-container">
+		<?php fmi_tpl_webcam(tpl_getConf('webcam_path'),tpl_getConf('webcam_time')); ?>
+	  </div>
+    </div>
+    <?php /*old includehook*/ @include(dirname(__FILE__).'/header.html')?>
     <?php /*old includehook*/ @include(dirname(__FILE__).'/pageheader.html')?>
-
     <?php flush()?>
 
     <?php if(tpl_getConf('sidebar') == 'both') { ?>
@@ -75,24 +66,23 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
         <div class="left_sidebar full-width">
           <?php echo fmi_tpl_sidebar_dispatch('main','left','sidebar',true); ?>
         </div>
-	      <div style="clear:both;" class="left-sidebar full-width">
-        	<div class="main_sidebar sidebar_box">
-	        	<?php tpl_searchform(); ?>
-        	</div>
+	    <div style="clear:both;" class="left-sidebar full-width">
+          <div class="main_sidebar sidebar_box">
+	       	<?php tpl_searchform(); ?>
           </div>
+        </div>
         <?php if(isset($INFO['userinfo'])) { ?>
-	        <div style="clear: both" class="left_sidebar full-width">
-	          <?php echo fmi_tpl_sidebar_dispatch('main','left','internal:private'); ?>
-	        </div>
+	      <div style="clear: both" class="left_sidebar full-width">
+	        <?php echo fmi_tpl_sidebar_dispatch('main','left','internal:private'); ?>
+	      </div>
         <?php }?>
         <div class="left_sidebar full-width">
             <?php echo fmi_tpl_sidebar_dispatch('main','left','calendar'); ?>
         </div>
 	  </div> <!-- sidebar-container -->
         
-		<div class="center_page">
-
-		  <?php if(isset($INFO['userinfo'])) { ?>
+	  <div class="center_page">
+        <?php if(isset($INFO['userinfo'])) { ?>
 		  <span class="userlink" style="display: <?php echo (strpos($ID,"user:") !== false ? 'block' : 'none'); ?>;">
 		    <?php
 		    	$match = str_replace('user:','',$ID); 
@@ -101,9 +91,9 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 				            	 "Profil von ".$match."</a>";
 		    ?>
 		  </span>
-		  <?php } ?>
-          <?php ($notoc) ? tpl_content(false) : tpl_content() ?>
-        </div>
+		<?php } ?>
+        <?php ($notoc) ? tpl_content(false) : tpl_content() ?>
+      </div>
         
       <?php } else { ?>
         <div class="page">

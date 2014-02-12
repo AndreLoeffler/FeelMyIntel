@@ -12,11 +12,12 @@ div.dokuwiki .header {
 
 div.dokuwiki .pagename {
   float: left;
-  font-size: 200%;
   font-weight: bolder;
-  color: __background_alt__;
+  font-size: 130%;
   text-align: left;
   vertical-align: middle;
+  margin: 0.2em;
+  color: __lightgray__;
 }
 
 div.dokuwiki .pagename a {
@@ -26,10 +27,11 @@ div.dokuwiki .pagename a {
 
 div.dokuwiki .logo {
   float: right;
-  font-size: 220%;
   font-weight: bolder;
   text-align: right;
   vertical-align: middle;
+  margin: 0.2em;
+  font-size: 130%;
 }
 
 div.dokuwiki .logo a {
@@ -63,6 +65,7 @@ div.dokuwiki div.meta {
   color: __text_alt__;
   font-size: 70%;
   color: black;
+  padding: 0 0.5em 0 0.5em;
 }
 
 div.dokuwiki div.meta div.user {
