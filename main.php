@@ -41,7 +41,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
   <?php /*old includehook*/ @include(dirname(__FILE__).'/meta.html')?>
 </head>
 
-<body style="background-image: url(<?php echo tpl_getMediaFile(array(tpl_getConf('background_path')), true); ?>);">
+<body style="background-image: url(<?php echo tpl_getMediaFile(array(':'.tpl_getConf('background_path'),tpl_getConf('background_path'),':wiki:'.tpl_getConf('background_path')), true); ?>);">
 <?php /*old includehook*/ @include(dirname(__FILE__).'/topheader.html')?>
 <div id="wrapper" class='<?php echo $ACT ?>'>
   <div class="dokuwiki">
