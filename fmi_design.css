@@ -8,8 +8,7 @@
 /* ----- General Elements ----- */
 
 html {
-	background: url(images/fmi/gebaude.jpg) no-repeat center center fixed;
-	background-size: cover;
+	
 }
 
 body {
@@ -17,6 +16,8 @@ body {
   color: __text__;
   margin: __body_margin__;
   line-height: __line_height__;
+  background: no-repeat center center fixed;
+  background-size: cover;
 }
 
 div#wrapper {

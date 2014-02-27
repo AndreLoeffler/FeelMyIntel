@@ -16,5 +16,6 @@ $lang['logowidth']                      = "Weite des Headerlogo (vergiss nicht d
 $lang['logoheigth']                     = "Höhe des Headerlogo (vergiss nicht die Einheit wie px)";
 $lang['show_backlink']                  = "Position vom Backlink link";
 $lang['webcam_path']					= "Pfad zur Datei, die vom Webcam-Skript erzeugt wird";
+$lang['background_path']				= "Pfad zum Hintergrund-Bild";
 $lang['webcam_time']					= "Refreshrate der Webcam";
 $lang['submenu_name']					= "Name des Untermenü-Namespace";

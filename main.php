@@ -24,7 +24,8 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang']?>"
- lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction']?>">
+ lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction']?>"
+ style="">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>
@@ -40,7 +41,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
   <?php /*old includehook*/ @include(dirname(__FILE__).'/meta.html')?>
 </head>
 
-<body>
+<body style="background-image: url(<?php echo tpl_getMediaFile(array(tpl_getConf('background_path')), true); ?>);">
 <?php /*old includehook*/ @include(dirname(__FILE__).'/topheader.html')?>
 <div id="wrapper" class='<?php echo $ACT ?>'>
   <div class="dokuwiki">

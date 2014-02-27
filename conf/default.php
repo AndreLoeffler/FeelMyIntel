@@ -17,6 +17,7 @@ $conf['logowidth']                  = '128px';                      // width of 
 $conf['logoheigth']                 = '128px';                      // heigth of the headerlogo
 $conf['show_backlink']              = 'both';                       // show backlink at top and/or bottom of the page
 $conf['webcam_path']				= 'http://fmi-wuerzburg.de/webcam/webcam.jpg'; //route to webcam-image
+$conf['background_path']			= 'images/fmi/gebaude.jpg'; 	//route to webcam-image
 $conf['webcam_time']				= '5000';						//timeout for refreshing webcam image
 $conf['submenu_name']				= 'submenu';					//name for submenu-creator
 ?>
