@@ -175,7 +175,7 @@ function fmi_tpl_makeCssRules($files,$name){
 }
 
 function fmi_tpl_webcam($path, $time) {
-	echo "<img src='".$path."' class='webcam' id='webcam' alt='Webcambild aus dem Fachschaftszimmer'></img><script type='text/javascript'>function ImageRefresh() { var unique = new Date(); document.getElementById('webcam').src = '".$path."?time=' +  unique.getTime(); } setInterval('ImageRefresh()',".$time.");</script><noscript><div class='webcam-noscript'>Kein JS: Statitsches Bild,<br>Seite neu laden zum aktualisieren.</div></noscript>";
+	if ($path !== "") echo "<img src='".$path."' class='webcam' id='webcam' alt='Webcambild aus dem Fachschaftszimmer'></img><script type='text/javascript'>function ImageRefresh() { var unique = new Date(); document.getElementById('webcam').src = '".$path."?time=' +  unique.getTime(); } setInterval('ImageRefresh()',".$time.");</script><noscript><div class='webcam-noscript'>Kein JS: Statitsches Bild,<br>Seite neu laden zum aktualisieren.</div></noscript>";
 }
 
 /**
