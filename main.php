@@ -71,7 +71,7 @@ require_once(dirname(__FILE__).'/tpl_functions.php');
 	       	<?php tpl_searchform(); ?>
           </div>
         </div>
-        <?php if(isset($INFO['userinfo'])) { ?>
+        <?php if(isset($INFO['userinfo']) && !tpl_getConf('closed')) { ?>
 	      <div style="clear: both" class="left_sidebar full-width">
 	        <?php echo fmi_tpl_sidebar_dispatch('main','left','internal:private'); ?>
 	      </div>

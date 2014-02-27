@@ -8,6 +8,7 @@
  */
 
 $conf['sidebar']                    = 'both';                       // enable/disable sidebar
+$conf['closed']						= 0;
 $conf['pagename']                   = 'sidebar';                    // the pagename for sidebars inside namespaces
 $conf['main_sidebar_always']		    = 1;														// show main sidebar on all namespaces
 $conf['hideactions']                = 0;                            // hide all wiki related actions for non logged in users

@@ -6,6 +6,7 @@
  */
 
 $lang['sidebar']                        = 'Sidebar Einstellungen';
+$lang['closed']							= 'Ist das Wiki geschlossen? (interne Sidebar verstecken)';
 $lang['pagename']                       = 'Seitenname der Sidebars';
 $lang['main_sidebar_always']			= 'Haupt Sidebar in allen Namensräumen anzeigen';
 $lang['left_content_sidebar_other']     = 'Andere Sidebars (Komma getrennt)';

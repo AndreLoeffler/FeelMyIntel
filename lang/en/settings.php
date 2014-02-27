@@ -6,6 +6,7 @@
  */
 
 $lang['sidebar']                        = "Sidebar setup";
+$lang['closed']							= 'Is the wiki closed? (hide internal sidebar)';
 $lang['pagename']                       = "Pagename to use for sidebars";
 $lang['main_sidebar_always']			= "Show main sidebar in every namespace";
 $lang['left_sidebar_content_other']     = "Other sidebars (comma separated)";
