@@ -15,14 +15,7 @@ if (!defined('DOKU_LF')) define('DOKU_LF',"\n");
 $sbpos = tpl_getConf('sidebar');
 
 // set notoc option and toolbar regarding the sitebar setup
-switch($sbpos) {
-  case 'both':
-    $notoc = (in_array('toc','main')) ? true : false;
-    break;
-  case 'none':
-    $notoc = false;
-    break;
-}
+$notoc = false;
 
 /**
  * Dispatches the given sidebar type to return the right content
