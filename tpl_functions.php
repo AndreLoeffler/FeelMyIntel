@@ -95,7 +95,7 @@ function p_sidebar_xhtml($sb,$pos,$sub=false) {
 }
 
 function fmi_DOM_include_submenus($data){
-	$dom = DOMDocument::loadHTML($data);
+	$dom = DOMDocument::loadHTML('<?xml encoding="UTF-8">'.$data);
 	$anchors = $dom->getElementsByTagName('a');
 	foreach($anchors as $d){
 		$st =  $d->getAttribute('href');
