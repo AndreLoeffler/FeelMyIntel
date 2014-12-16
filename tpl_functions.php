@@ -40,8 +40,8 @@ function fmi_tpl_sidebar_dispatch($sb,$pos,$pn,$sub=false) {
                 $always = tpl_getConf('main_sidebar_always');
                 if($always or (!$always && !getNS($ID))) {
                     $ret .= '<div class="main_sidebar sidebar_box">' . DOKU_LF;
-                    $ret .= p_sidebar_xhtml($pn,$pos,$sub) . DOKU_LF;
-                    $ret .= '</div>' . DOKU_LF;
+                    $ret .= p_sidebar_xhtml(htmlspecialchars_decode($pn),$pos,$sub) . DOKU_LF;
+                    $ret .= '</div>'. DOKU_LF;
                 }
             } elseif(!@page_exists($pn) && auth_quickaclcheck($pn) >= AUTH_CREATE) {
                 if(@file_exists(DOKU_TPLINC.'lang/'. $conf['lang'].'/nosidebar.txt')) {
